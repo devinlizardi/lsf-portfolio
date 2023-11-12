@@ -1,5 +1,5 @@
 import { Work } from "./components/Work"
-import works from "./../public/work/works.js"
+import works from "/work/works.js?url"
 
 function App() {
 
