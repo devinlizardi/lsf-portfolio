@@ -1,5 +1,5 @@
 import { Work } from "./components/Work"
-import works from "/work/works.js?url"
+import works from './assets/works'
 
 function App() {
 
@@ -10,7 +10,6 @@ function App() {
         <li key={i}>
           <Work title={works[i].title} type={works[i].type} date={works[i].date} />
         </li>
-
       )
     }
     return components
