@@ -1,5 +1,6 @@
 import { Work } from "./components/Work"
 import works from './assets/works'
+import { Link } from "react-router-dom"
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
       <div className="flex flex-col gap-16 p-4">
         <div className="w-9/12">
           <h2 className="font-light">
-            <span className="text-white">LUCAS SANCHES FERREIRA </span>is an editor
+            <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES FERREIRA </Link>is an editor
             and creative with 5+ years of post-production experience. This website
             features his independent music, freelance video work, and commercial portfolio as a
             full-time assistant editor at <span className="text-white">Arcade Edit</span>,
