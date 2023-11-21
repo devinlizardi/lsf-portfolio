@@ -24,7 +24,7 @@ function App() {
             <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES FERREIRA </Link>is an editor
             and creative with 5+ years of post-production experience. This website
             features his independent music, freelance video work, and commercial portfolio as a
-            full-time assistant editor at <span className="text-white">Arcade Edit</span>,
+            full-time assistant editor at <a href="https://arcadeedit.com/" className="text-white hover:text-black">Arcade Edit</a>,
             an award winning editing company.</h2>
         </div>
         <h1 className="text-white font-bold italic text-3xl -mb-8">TIMELINE</h1>
