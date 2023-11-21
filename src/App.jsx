@@ -42,28 +42,28 @@ function App() {
             full-time assistant editor at <a href="https://arcadeedit.com/" className="text-white hover:text-black">Arcade Edit</a>,
             an award winning editing company.</h2>
         </div>
-        <h1 className="text-white font-bold italic text-3xl -mb-8">TIMELINE</h1>
-        <div>
-          <div className="w-full grid place-content-end">
-            <div className="rounded bg-[#898989] flex mx-4 text-sm">
+        <div className="flex w-full justify-between items-end -mb-8">
+          <h1 className="text-white font-bold italic text-3xl">TIMELINE</h1>
+          <div className="w-fit">
+            <div className="rounded-xl bg-[#898989] flex mx-4 text-sm">
               <button
                 style={filter === 'audio' ? active : inactive}
-                className="w-16 rounded hover:bg-[#7d7d7d]"
+                className="w-16 rounded-xl hover:bg-[#7d7d7d]"
                 onClick={() => { handleFilter('audio') }}>
                 audio
               </button>
               <button
                 style={filter === 'video' ? active : inactive}
-                className="w-16 rounded hover:bg-[#7d7d7d]"
+                className="w-16 rounded-xl hover:bg-[#7d7d7d]"
                 onClick={() => { handleFilter('video') }}>
                 video
               </button>
             </div>
           </div>
-          <ul className="gap-4">
-            {makeWork()}
-          </ul>
         </div>
+        <ul className="gap-4">
+          {makeWork()}
+        </ul>
       </div>
     </>
   )
