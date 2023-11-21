@@ -3,14 +3,14 @@ export default [
     "title": "Erase Me",
     "type": "music",
     "date": "nov 2023",
-    "filter": "audio",
+    "filter": "music",
     "url": "https://player.vimeo.com/video/748216010?h=8529392af8"
   },
   {
     "title": "Wanted To",
     "type": "music",
     "date": "nov 2023",
-    "filter": "audio",
+    "filter": "music",
     "url": "https://player.vimeo.com/video/748216010?h=8529392af8"
   },
   {
@@ -24,14 +24,14 @@ export default [
     "title": "Carnival Cruises",
     "type": "assistant editor",
     "date": "nov 2023",
-    "filter": "audio",
+    "filter": "commercial",
     "url": "https://player.vimeo.com/video/748216010?h=8529392af8"
   },
   {
     "title": "COS Socials New York Fashion Week",
     "type": "editor",
     "date": "nov 2023",
-    "filter": "video",
+    "filter": "commercial",
     "url": "https://player.vimeo.com/video/748216010?h=8529392af8"
   }
 ]

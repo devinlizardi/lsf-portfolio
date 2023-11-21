@@ -8,14 +8,14 @@ const Work = ({ title, type, date, url }) => {
 
   return (
     <>
-      <div className="w-full bg-[#7f7f7f] bg-opacity-0 
+      <button className="w-full bg-[#7f7f7f] bg-opacity-0 text-left
             hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between 
             transition-all duration-500 px-4 font-light ease-in"
         onClick={() => { setMode(!mode) }}>
         <a className="w-[125px]">{title}</a>
         <span className="w-[110px]">{type}</span>
         <span className="flex-none">{date}</span>
-      </div>
+      </button>
 
 
       {mode &&
