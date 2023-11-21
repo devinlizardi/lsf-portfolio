@@ -28,8 +28,9 @@ const Work = ({ title, type, date }) => {
                 <span className="flex-none">{date}</span>
                 <button
                   onClick={() => { setMode(false) }}
+                  onTouchStart={ () => { setMode(false) } }
                   className="hover:bg-[#6b6b6b] w-8 h-8 rounded-full grid 
-                    place-content-center m-1 transition duration-300 ease z-10">
+                    place-content-center m-1 transition duration-300 ease cursor-pointer z-50">
                   <img src={svg} className="invert scale-[30%]" />
                 </button>
               </div>
