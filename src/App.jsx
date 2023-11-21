@@ -1,17 +1,26 @@
-import { Work } from "./components/Work"
 import works from './assets/works'
-import { Link } from "react-router-dom"
-import { useState } from "react"
+import { Link, useSearchParams } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { WorkList } from './components/WorkList'
 
 function App() {
-  const [filter, setFilter] = useState('none')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [filterState, setFilter] = useState(searchParams.set > 0 ? searchParams.get('filter') : 'none')
   const filters = ['video', 'commercial', 'music']
 
+  useEffect(() => {
+    if (searchParams.size > 0) {
+      setFilter(searchParams.get('filter'))
+    }
+  },[searchParams])
+
   const handleFilter = (newFilter) => {
-    if (filter === newFilter) {
+    if (filterState === newFilter) {
       setFilter('none')
+      setSearchParams({})
     } else {
       setFilter(newFilter)
+      setSearchParams({ "filter": newFilter })
     }
   }
 
@@ -38,10 +47,11 @@ function App() {
                 filters.forEach(f => {
                   components.push(
                     <button
-                      style={filter === f ? active : inactive}
+                      style={filterState === f ? active : inactive}
+                      key={filters.indexOf(f)}
                       className="w-fit px-2 py-1 rounded-full transition-all ease hover:italic"
                       onClick={() => { handleFilter(f) }}>
-                      {f}
+                      <Link>{f}</Link>
                     </button>)
                 })
                 return components
@@ -49,21 +59,7 @@ function App() {
             </div>
           </div>
         </div>
-        <ul className="gap-4">
-          {(function () {
-            const components = []
-            for (let i = 0; i < works.length; i++) {
-              if (filter === 'none' || works[i].filter === filter) {
-                components.push(
-                  <li key={i}>
-                    <Work title={works[i].title} type={works[i].type} date={works[i].date} url={works[i].url} />
-                  </li>
-                )
-              }
-            }
-            return components
-          })()}
-        </ul>
+        <WorkList filterState={filterState} works={works}/>
       </div>
     </>
   )
