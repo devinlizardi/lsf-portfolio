@@ -3,7 +3,7 @@ import { useState } from "react"
 import Draggable from 'react-draggable'
 import svg from './../assets/x-icon.svg'
 
-const Work = ({ title, type, date }) => {
+const Work = ({ title, type, date, url }) => {
   const [mode, setMode] = useState(false)
 
   return (
@@ -36,10 +36,10 @@ const Work = ({ title, type, date }) => {
               </div>
               <div className="p-8 w-full">
                 <iframe 
-                  src="https://player.vimeo.com/video/748216010?h=8529392af8" 
+                  src={url} 
                   className="w-full sm:h-[300px] md:h-[445px]"
                   allow="autoplay; fullscreen; picture-in-picture" 
-                  allowfullscreen />
+                  allowFullScreen />
               </div>
             </div>
           </Draggable>
