@@ -14,7 +14,7 @@ const Work = ({ title, type, date, url }) => {
         onClick={() => { setMode(!mode) }}>
         <a className="w-[125px]">{title}</a>
         <span className="w-[110px]">{type}</span>
-        <span className="flex-none">{date}</span>
+        <span className="flex-none w-[66px] text-right">{date}</span>
       </button>
 
 
