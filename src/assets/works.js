@@ -7,11 +7,25 @@ export default [
     "url": "https://player.vimeo.com/video/892776363"
   },
   {
+    "title": "Sanches Home",
+    "type": "freelance",
+    "date": "oct 2023",
+    "filter": "video",
+    "url": ""
+  },
+  {
     "title": "Carnival Cruises",
     "type": "commercial",
     "date": "sep 2023",
     "filter": "commercial",
     "url": "https://player.vimeo.com/video/892776349"
+  },
+  {
+    "title": "COS NY Fashion Week",
+    "type": "freelance",
+    "date": "sep 2023",
+    "filter": "video",
+    "url": ""
   },
   {
     "title": "America Erased",
@@ -33,6 +47,13 @@ export default [
     "date": "may 2023",
     "filter": "commercial",
     "url": "https://player.vimeo.com/video/892776311"
+  },
+  {
+    "title": "Hugo Boss Miami Spring '23",
+    "type": "freelance",
+    "filter": "video",
+    "date": "mar 2023",
+    "url": ""
   },
   {
     "title": "Doordash Superbowl",
@@ -117,5 +138,92 @@ export default [
     "filter": "commercial",
     "date": "oct 2021",
     "url": "https://player.vimeo.com/video/892116876"
+  },
+  {
+    "title": "Dopesick",
+    "type": "freelance",
+    "filter": "video",
+    "date": "sep 2019",
+    "url": ""
+  },
+  {
+    "title": "Harley Davidson Freedom Stories",
+    "type": "freelance",
+    "filter": "video",
+    "date": "jan 2019",
+    "url": ""
+  },
+  {
+    "title": "College Archives The NY Commuter",
+    "type": "freelance",
+    "filter": "video",
+    "date": "may 2018",
+    "url": ""
+  },
+  {
+    "title": "College Archives MMC Study Abroad",
+    "type": "freelance",
+    "filter": "video",
+    "date": "may 2017",
+    "url": ""
+  },
+  {
+    "title": "College Archives Barcelona",
+    "type": "freelance",
+    "filter": "video",
+    "date": "dec 2016",
+    "url": ""
+  },
+
+  // music
+
+  {
+    "title": "Erase Me",
+    "type": "music",
+    "filter": "music",
+    "date": "",
+    "url": ""
+  },
+  {
+    "title": "Wanted To",
+    "type": "music",
+    "filter": "music",
+    "date": "",
+    "url": ""
+  },
+  {
+    "title": "I Can't Imagine",
+    "type": "music",
+    "filter": "music",
+    "date": "",
+    "url": ""
+  },
+  {
+    "title": "Lose My Way",
+    "type": "music",
+    "filter": "music",
+    "date": "",
+    "url": ""
+  },
+  {
+    "title": "Streetlights",
+    "type": "music",
+    "filter": "music",
+    "date": "",
+    "url": ""
+  },
+  {
+    "title": "Send Me Home",
+    "type": "music",
+    "filter": "music",
+    "date": "",
+    "url": ""
+  },
+  {
+    "title": "So Long",
+    "type": "music",
+    "filter": "music",
+    "date": "",
+    "url": ""
   },
 ]

@@ -39,7 +39,7 @@ function App() {
             an award winning editing company.</h2>
         </div>
         <div className="flex w-full justify-between items-center -mb-8">
-          <h1 className="text-white font-bold italic text-3xl">TIMELINE</h1>
+          <h1 className="text-white font-bold italic text-3xl cursor-pointer" onClick={() => { setFilter('none') }}>TIMELINE</h1>
           <div className="w-fit">
             <div className="rounded-full bg-[#8a8a8a] bg-opacity-50 gap-2 flex mx-4 text-sm">
               {(function () {
