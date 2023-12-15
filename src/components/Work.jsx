@@ -12,9 +12,9 @@ const Work = ({ title, type, date, url }) => {
             hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between 
             transition-all duration-500 px-4 font-light ease-in"
         onClick={() => { setMode(!mode) }}>
-        <a className="w-[125px]">{title}</a>
+        <a className="w-[155px]">{title}</a>
         <span className="w-[110px]">{type}</span>
-        <span className="flex-none w-[66px] text-right">{date}</span>
+        <span className="flex-none w-[75px] text-right">{date}</span>
       </button>
 
 
