@@ -37,8 +37,7 @@ function App() {
         </div>
         <div className="flex w-full justify-between items-center -mb-8">
           <Timeline filter={filterState} handleFilter={handleFilter} />
-          <div className="w-fit">
-            <div className="rounded-full bg-[#8a8a8a] bg-opacity-50 gap-2 flex mx-4 text-sm">
+            <div className="w-fit min-w-[180px] overflow-scroll rounded-full bg-[#8a8a8a] bg-opacity-50 gap-2 flex mx-4 text-sm">
               {(function () {
                 const components = []
                 filters.forEach(f => {
@@ -54,7 +53,6 @@ function App() {
                 return components
               })()}
             </div>
-          </div>
         </div>
         <WorkList filterState={filterState} works={works} />
       </div>
