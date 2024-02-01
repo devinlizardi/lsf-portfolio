@@ -7,7 +7,8 @@ import { Timeline } from './components/Timeline'
 function App() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [filterState, setFilter] = useState(searchParams.get('filter') ?? 'none')
-  const filters = ['video', 'commercial', 'music']
+  const filters = ['freelance', 'commercial']
+  const nonMusicWorks = works.filter(w => w.type != 'music')
 
   useEffect(() => {
     if (searchParams.size > 0) {
@@ -27,34 +28,33 @@ function App() {
   return (
     <>
       <div className="flex flex-col gap-16 p-4">
-        <div className="sm:w-[657px]">
+        <div className='max-w-5xl'>
           <h2 className="font-light ">
             <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES FERREIRA </Link>is an editor
             and creative with 5+ years of post-production experience. This website
-            features his independent music, freelance video work, <br className='hidden sm:inline-block' /> and commercial portfolio as a
-            full-time assistant editor at <a href="https://arcadeedit.com/" className="text-white hover:text-black">Arcade Edit</a>, <br className='hidden sm:inline-block' />
+            features his freelance video work <br className='hidden sm:inline-block' /> and commercial portfolio  as a full-time assistant editor at <a href="https://arcadeedit.com/" className="text-white hover:text-black">Arcade Edit</a>,
             an award winning editing company.</h2>
         </div>
         <div className="flex w-full justify-between items-center -mb-8">
           <Timeline filter={filterState} handleFilter={handleFilter} />
-            <div className="w-fit min-w-[180px] overflow-scroll rounded-full bg-[#8a8a8a] bg-opacity-50 gap-2 flex mx-4 text-sm">
-              {(function () {
-                const components = []
-                filters.forEach(f => {
-                  components.push(
-                    <button
-                      style={filterState === f ? active : inactive}
-                      key={filters.indexOf(f)}
-                      className="w-fit px-2 py-1 rounded-full transition-all ease hover:italic"
-                      onClick={() => { handleFilter(f) }}>
-                      <Link>{f}</Link>
-                    </button>)
-                })
-                return components
-              })()}
-            </div>
+          <div className="w-fit px-4 overflow-scroll rounded-full bg-[#8a8a8a] bg-opacity-50 flex justify-evenly mx-4 text-sm no-scrollbar">
+            {(function () {
+              const components = []
+              filters.forEach(f => {
+                components.push(
+                  <button
+                    style={filterState === f ? active : inactive}
+                    key={filters.indexOf(f)}
+                    className="w-fit px-1 py-1 rounded-full transition-all ease hover:italic"
+                    onClick={() => { handleFilter(f) }}>
+                    <Link>{f}</Link>
+                  </button>)
+              })
+              return components
+            })()}
+          </div>
         </div>
-        <WorkList filterState={filterState} works={works} />
+        <WorkList filterState={filterState} works={nonMusicWorks} />
       </div>
     </>
   )

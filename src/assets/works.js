@@ -1,178 +1,178 @@
 export default [
   {
     "title": "SeatGeek",
-    "type": "commercial",
+    "type": "assistant editor",
     "date": "nov 2023",
     "filter": "commercial",
     "url": "https://player.vimeo.com/video/892776363"
   },
   {
     "title": "Sanches Home",
-    "type": "freelance",
+    "type": "self produced",
     "date": "oct 2023",
-    "filter": "video",
-    "url": ""
+    "filter": "freelance",
+    "url": "https://player.vimeo.com/video/906901434"
   },
   {
     "title": "Carnival Cruises",
-    "type": "commercial",
+    "type": "assistant editor",
     "date": "sep 2023",
     "filter": "commercial",
     "url": "https://player.vimeo.com/video/892776349"
   },
   {
     "title": "COS NY Fashion Week",
-    "type": "freelance",
+    "type": "editor",
     "date": "sep 2023",
-    "filter": "video",
-    "url": ""
+    "filter": "freelance",
+    "url": "https://player.vimeo.com/video/906901356"
   },
   {
     "title": "America Erased",
-    "type": "commerical",
+    "type": "cutting assistant",
     "date": "aug 2023",
     "filter": "commercial",
     "url": "https://player.vimeo.com/video/892776339"
   },
   {
     "title": "AutoTrader",
-    "type": "commercial",
+    "type": "assistant editor",
     "date": "jun 2023",
     "filter": "commercial",
     "url": "https://player.vimeo.com/video/892776327"
   },
   {
     "title": "KeyBank",
-    "type": "commercial",
+    "type": "assistant editor",
     "date": "may 2023",
     "filter": "commercial",
     "url": "https://player.vimeo.com/video/892776311"
   },
   {
     "title": "Hugo Boss Miami Spring '23",
-    "type": "freelance",
-    "filter": "video",
+    "type": "editor",
+    "filter": "freelance",
     "date": "mar 2023",
-    "url": ""
+    "url": "https://player.vimeo.com/video/906901420"
   },
   {
     "title": "Doordash Superbowl",
-    "type": "commercial",
+    "type": "assistant editor",
     "filter": "commercial",
     "date": "feb 2023",
     "url": "https://player.vimeo.com/video/892116964"
   },
   {
     "title": "Budlight Superbowl",
-    "type": "commercial",
+    "type": "assistant editor",
     "filter": "commercial",
     "date": "jan 2023",
     "url": "https://player.vimeo.com/video/892116952"
   },
   {
     "title": "Dunkin",
-    "type": "commercial",
+    "type": "assistant editor",
     "filter": "commercial",
     "date": "sep 2022",
     "url": "https://player.vimeo.com/video/892116944"
   },
   {
     "title": "Mananalu",
-    "type": "commercial",
+    "type": "assistant editor",
     "filter": "commercial",
     "date": "sep 2022",
     "url": "https://player.vimeo.com/video/892116936"
   },
   {
     "title": "WellsFargo",
-    "type": "commercial",
+    "type": "assistant editor",
     "filter": "commercial",
     "url": "https://player.vimeo.com/video/892116928",
     "date": "aug 2022"
   },
   {
     "title": "McDonalds",
-    "type": "commercial",
+    "type": "assistant editor",
     "filter": "commercial",
     "date": "jun 2022",
     "url": "https://player.vimeo.com/video/892116919"
   },
   {
     "title": "Midea",
-    "type": "commercial",
+    "type": "assistant editor",
     "filter": "commercial",
     "date": "may 2022",
     "url": "https://player.vimeo.com/video/892116910"
   },
   {
     "title": "Penfed",
-    "type": "commercial",
+    "type": "assistant editor",
     "filter": "commercial",
     "date": "feb 2022",
     "url": "https://player.vimeo.com/video/892116900"
   },
   {
     "title": "Paramount +",
-    "type": "commercial",
+    "type": "assistant editor",
     "filter": "commercial",
     "date": "jan 2022",
     "url": "https://player.vimeo.com/video/892118443"
   },
   {
     "title": "DSG",
-    "type": "commercial",
+    "type": "assistant editor",
     "filter": "commercial",
     "date": "dec 2021",
     "url": "https://player.vimeo.com/video/892116894"
   },
   {
     "title": "Statefarm",
-    "type": "commercial",
+    "type": "assistant editor",
     "filter": "commercial",
     "date": "oct 2021",
     "url": "https://player.vimeo.com/video/892116885"
   },
   {
     "title": "Sprite",
-    "type": "commercial",
+    "type": "assistant editor",
     "filter": "commercial",
     "date": "oct 2021",
     "url": "https://player.vimeo.com/video/892116876"
   },
   {
     "title": "Dopesick",
-    "type": "freelance",
-    "filter": "video",
+    "type": "editor",
+    "filter": "freelance",
     "date": "sep 2019",
-    "url": ""
+    "url": "https://player.vimeo.com/video/906901380"
   },
   {
     "title": "Harley Davidson Freedom Stories",
-    "type": "freelance",
-    "filter": "video",
+    "type": "director-editor",
+    "filter": "freelance",
     "date": "jan 2019",
-    "url": ""
+    "url": "https://player.vimeo.com/video/906901394"
   },
   {
     "title": "College Archives The NY Commuter",
-    "type": "freelance",
-    "filter": "video",
+    "type": "director-editor",
+    "filter": "freelance",
     "date": "may 2018",
-    "url": ""
+    "url": "https://player.vimeo.com/video/906901332"
   },
   {
     "title": "College Archives MMC Study Abroad",
-    "type": "freelance",
-    "filter": "video",
+    "type": "director-editor",
+    "filter": "freelance",
     "date": "may 2017",
-    "url": ""
+    "url": "https://player.vimeo.com/video/906901315"
   },
   {
     "title": "College Archives Barcelona",
-    "type": "freelance",
-    "filter": "video",
+    "type": "director-editor",
+    "filter": "freelance",
     "date": "dec 2016",
-    "url": ""
+    "url": "https://player.vimeo.com/video/906901290"
   },
 
   // music

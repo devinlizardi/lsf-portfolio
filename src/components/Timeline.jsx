@@ -8,6 +8,7 @@ import asteriskPink from './../assets/asterisk-pink.svg'
 // video - pink
 
 const Timeline = ({ filter, handleFilter }) => {
+  // eslint-disable-next-line no-unused-vars
   const asterisk = ((() => {
     switch (filter) {
       case 'commercial':
@@ -24,7 +25,6 @@ const Timeline = ({ filter, handleFilter }) => {
   return (
     <span className="flex gap-2 items-start w-[160px] flex-none">
       <h1 className="text-white font-bold italic text-3xl cursor-pointer hover:text-yellow-300" onClick={() => { handleFilter() }}>TIMELINE</h1>
-      <img className='w-4' src={asterisk} />
     </span>)
 }
 
