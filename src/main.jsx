@@ -8,13 +8,14 @@ import {
   RouterProvider,
 } from "react-router-dom"
 import { Error } from './components/Error.jsx'
+import { Profile } from './components/Profile.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(<>
     <Route path='/' element={<App />} errorElement={<Error />}>
       <Route path=':filter' />
     </Route>
-    <Route path='profile' element={<h1>profile</h1>} />
+    <Route path='profile' element={<Profile />} />
     <Route path='contact' element={<h1>contact</h1>} /></>
   )
 );
