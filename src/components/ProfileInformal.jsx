@@ -11,14 +11,33 @@ import musicGuy from './../assets/memes/music-guy.jpg'
 const G = ({ children, meme }) => {
   const [hover, setHover] = useState(false)
   const [x, setX] = useState()
+  const [cursor, setCursor] = useState('n-resize')
 
   const handleX = (e) => { setX(e.clientX - 100) }
+  const spinCursor = () => {
+    if (cursor === 'n-resize') {
+      setCursor('e-resize')
+      return
+    }
+    if (cursor === 'e-resize') {
+      setCursor('s-resize')
+      return
+    }
+    if (cursor === 's-resize') {
+      setCursor('w-resize')
+      return
+    }
+    if (cursor === 'w-resize') {
+      setCursor('n-resize')
+      return
+    }
+  }
 
   return (<>
     <span
-      className="text-[#73fc7a] font-medium"
+      className="text-[#73fc7a] font-medium" style={{ cursor: cursor }}
       onMouseOver={(e) => { setHover(true); handleX(e) }}
-      onMouseMove={(e) => handleX(e)}
+      onMouseMove={(e) => { handleX(e); spinCursor() }}
       onMouseOut={() => setHover(false)}
     >{children}</span>
     {hover && <img src={meme} className='absolute' style={{ left: x }} />}
