@@ -30,10 +30,12 @@ function App() {
       <div className="flex flex-col gap-16 p-4">
         <div className='max-w-5xl'>
           <h2 className="font-light">
-            <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES FERREIRA </Link>is an editor
-            and creative with 5+ years of post-production experience. This website
-            features his freelance video work <br className='hidden sm:inline-block' /> and commercial portfolio  as a full-time assistant editor at <a href="https://arcadeedit.com/" className="text-white hover:text-black">Arcade Edit</a>,
-            an award winning editing company.</h2>
+            <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES
+              FERREIRA </Link>is an editor and creative with 5+ years of post-production experience.
+            This website features his freelance video work and commercial portfolio  as a full-time
+            assistant editor at <a href="https://arcadeedit.com/"
+              className="text-white hover:text-black">Arcade Edit</a>,an award winning editing
+            company.</h2>
         </div>
         <div className="flex w-full justify-between items-center -mb-8">
           <Timeline filter={filterState} handleFilter={handleFilter} />

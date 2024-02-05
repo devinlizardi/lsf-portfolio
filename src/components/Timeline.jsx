@@ -1,30 +1,47 @@
 /* eslint-disable react/prop-types */
-import asteriskBlue from './../assets/asterisk-blue.svg'
-import asteriskYellow from './../assets/asterisk-yellow.svg'
-import asteriskPink from './../assets/asterisk-pink.svg'
-
-// commercial - yellow
-// music - blue
-// video - pink
+import { useState } from 'react'
+import cW from './../assets/[c]-white-200x200.png'
+import cY from './../assets/[c]-yellow-200x200.png'
+import fW from './../assets/[f]-white-200x200.png'
+import fY from './../assets/[f]-yellow-200x200.png'
 
 const Timeline = ({ filter, handleFilter }) => {
-  // eslint-disable-next-line no-unused-vars
+  const [hover, setHover] = useState(false)
+
   const asterisk = ((() => {
     switch (filter) {
       case 'commercial':
-        return asteriskYellow
-      case 'music':
-        return asteriskBlue
-      case 'video':
-        return asteriskPink
+        return [cW, cY]
+      case 'freelance':
+        return [fW, fY]
       default:
-        return ''
+        return ['', '']
     }
   })())
 
   return (
-    <span className="flex gap-2 items-start w-[160px] flex-none">
-      <h1 className="text-white font-bold italic text-3xl cursor-pointer hover:text-yellow-300" onClick={() => { handleFilter() }}>TIMELINE</h1>
+    <span
+      className="flex sm:gap-2 items-start w-[160px] flex-none cursor-pointer"
+      onMouseOver={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      onClick={() => handleFilter()}
+    >
+      <h1
+        className="text-white font-bold italic text-3xl"
+        style={{ color: hover ? 'rgb(253 224 71)' : 'white' }}
+      >TIMELINE</h1>
+
+      <span>
+        <img src={asterisk[0]}
+          className='w-10 absolute'
+          style={{ visibility: hover ? 'hidden' : 'visible' }}
+        />
+        <img src={asterisk[1]}
+          className='w-10 absolute'
+          style={{ visibility: hover ? 'visible' : 'hidden' }}
+        />
+      </span>
+
     </span>)
 }
 
