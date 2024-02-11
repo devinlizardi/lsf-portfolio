@@ -11,7 +11,7 @@ const Formal = () => {
         research facility conducting focus groups, served as a waiter and bartender, navigated the bustling
         streets of NYC delivering food on a fixed-gear bicycle, and assumed the role of rhythm guitar for
         an acclaimed indie R&B artist. He also writes and records original music, going by
-        <a className="text-white" href="http://instagram.com/sanches.wav"> LUCAS SANCHES</a>
+        <a className="text-white" href="http://instagram.com/sanches.wav"> LUCAS SANCHES </a>
         on all streaming platforms.
         <br /><br />
         Currently based in Miami, Florida, Lucas channels his creativity through video editing and music.

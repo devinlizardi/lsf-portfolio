@@ -60,18 +60,19 @@ const Profile = () => {
 
       <div className="ml-12 leading-loose">
         <h3 className="italic font-bold">CONTACT</h3>
-        <h4><a href="#">lsf.mov@gmail.com</a></h4>
+        <h4><a
+          href="mailto:lsf.move@gmail.com"
+          className="hover:text-[#73fc7a]">
+          lsf.mov@gmail.com</a></h4>
         +1 786-547-2024
       </div>
       <br /><br />
-      <div className="ml-40 leading-loose text-right w-[120px]">
+      <div className="ml-40 leading-loose text-right w-[120px] [&>a:hover]:text-[#73fc7a]">
         <h3 className="italic font-bold">LINKS</h3>
         <a href="http://www.linkedin.com/in/lsfnyc">LinkedIn</a><br />
         <a href="https://www.instagram.com/lsf.mov/">Instagram</a><br />
         <a href="https://vimeo.com/lsfnyc">Vimeo</a><br />
-        <a href="https://soundcloud.com/sancheslucas">Soundcloud</a><br />
-        <a href="https://open.spotify.com/artist/6HpybOnNyCHX67RvwvxwDn?si=_oxsQDtJQ3KPzYfIyMdKhg">Spotify</a><br />
-        <a href="https://music.apple.com/us/artist/lucas-sanches/1528431346">Apple Music</a><br />
+        <a href="https://linktr.ee/somdolucas">Music</a>
       </div>
 
     </div>
