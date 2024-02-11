@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import dogMeme from './../assets/memes/sus-dog.jpg'
 import confusedMan from './../assets/memes/confused-man.jpg'
 import impatientWoman from './../assets/memes/impatient-woman.jpg'
@@ -49,11 +50,11 @@ const Informal = () => {
     <>
       <p>
         Lucas (<G meme={dogMeme}>who definitely did not type this himself in the 3rd person</G>)
-        is a proud Brasileiro Americano that likes to edit videos and make music.
+        is a proud Brasileiro Americano
         <br /><br />
         he had no idea what he wanted at 18 (<G meme={confusedMan}>how could you</G>) so he opted for
         a liberal arts curriculum at a college that gave him a discount for being a
-        1st gen student. but really he went there because it was in New York City.
+        1st gen student, but mostly opted for that school because it was in New York City.
         <br /><br />
         he took design, editing, and music courses and decided maybe he could do that
         irl? (<G meme={impatientWoman}>tbd, still in progress</G>)
@@ -65,16 +66,15 @@ const Informal = () => {
         he waited tables<br />
         (<G meme={bartender}>bartended too, that was more fun</G>)
         <br /><br />
-        delivered food to nyc residents on a fixed gear bicycle<br />
-        (<G meme={cycling}>early day doordasher over here, legs for days</G>)
+        delivered food on a fixed gear bicycle<br />
+        (<G meme={cycling}>early day doordasher over here</G>)
         <br /><br />
         and released original music<br />
         (<G meme={musicGuy}>and i still do, i go by <a href="http://instagram.com/sanches.wav"
           className="text-white">LUCAS SANCHES</a> on all platforms</G>)
         <br /><br />
         he is currently based in Miami, Florida<br />
-        where he engages in casual overthinking, serious video-editing, and self
-        soothing music-making.
+        exploring his creativity thru video editing and music.
       </p>
     </>
   )
