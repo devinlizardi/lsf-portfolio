@@ -33,7 +33,7 @@ const Work = ({ title, type, date, url, push, pop, order }) => {
             <button
               className="w-fit h-fit bg-[#757575] text-white absolute rounded
                focus:border-green-400 border border-[#757575]"
-              style={{ animation: 'open 50ms', zIndex: order * 10 }}
+              style={{ animation: 'open 75ms', zIndex: order * 10 }}
             >
               <div className="flex w-full justify-between items-center px-4">
                 <a className="w-[125px]">{title}</a>
