@@ -48,7 +48,7 @@ const Profile = () => {
           src={marbleForwardGif} />
 
 
-        <h1>{mode ? "FORMAL" : "INFORMAL"}</h1>
+        <h1 className=" font-bold">{mode ? "FORMAL" : "INFORMAL"}</h1>
 
       </button>
 

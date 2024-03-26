@@ -112,7 +112,7 @@ export default [
     "url": "https://player.vimeo.com/video/892116900"
   },
   {
-    "title": "Paramount +",
+    "title": "Paramount+",
     "type": "assistant editor",
     "filter": "commercial",
     "date": "jan 2022",
