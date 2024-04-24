@@ -33,11 +33,11 @@ const Timeline = ({ filter, handleFilter }) => {
 
       <span>
         <img src={asterisk[0]}
-          className='w-10 absolute'
+          className='w-10 absolute border-0 border-opacity-0 border-none'
           style={{ visibility: hover ? 'hidden' : 'visible' }}
         />
         <img src={asterisk[1]}
-          className='w-10 absolute'
+          className='w-10 absolute  border-0 border-opacity-0 border-none'
           style={{ visibility: hover ? 'visible' : 'hidden' }}
         />
       </span>

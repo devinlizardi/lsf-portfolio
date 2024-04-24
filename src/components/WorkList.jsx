@@ -15,9 +15,14 @@ const WorkList = ({ filterState, works }) => {
   }
 
   const pop = () => {
-    setStack(stack.slice(1))
-    const nextItem = document.getElementById(`work-${stack[1].id}`)
-    nextItem.focus()
+    try {
+      setStack(stack.slice(1))
+      const nextItem = document.getElementById(`work-${stack[1].id}`)
+      nextItem.focus()
+    } catch (e) {
+      // console.log(e)
+    }
+
   }
 
   const getOrder = (id) => {
