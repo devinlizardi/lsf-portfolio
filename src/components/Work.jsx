@@ -47,10 +47,8 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
     window.addEventListener('resize', () => {
       if (!desktop() && mode) {
         close()
-        setExpand(true)
       } else if (desktop() && expand) {
         setExpand(false)
-        open()
       }
     })
   }, [mode, expand])
@@ -58,10 +56,11 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
   // styles
 
   const expandedStyle = expand ? {
-    height: '220px',
-    maxHeight: '220px',
+    height: '300px',
+    maxHeight: '300px',
     position: 'relative',
-    backgroundColor: '#7f7f7f'
+    backgroundColor: '#4f4f4f',
+    color: 'white',
   } : {
     maxHeight: '48px',
   }
@@ -77,10 +76,13 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
         <a className="w-[155px] md:w-[270px] md:-mr-[200px]">{title}</a>
         <span className="w-[125px]">{type}</span>
         <span className="flex-none w-[75px] text-right">{date}</span>
-        {expand && <div className="absolute bottom-4 left-[calc(50vw-168px)]">
+
+        {/* mobile expanded */}
+        {expand && <div className="absolute top-12 left-0 w-full h-[80%]">
           <iframe
             src={url}
-            allow="autoplay; fullscreen; picture-in-picture"
+            allow="fullscreen;"
+            className="w-full h-full"
             allowFullScreen />
         </div>}
       </button>
