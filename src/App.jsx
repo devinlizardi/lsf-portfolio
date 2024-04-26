@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col gap-16 p-4 text-xs md:text-base">
+      <div className="flex flex-col gap-16 p-4 text-xs sm:text-base">
         <div className='max-w-5xl'>
           <h2 className="font-light">
             <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES
@@ -47,7 +47,7 @@ function App() {
                   <button
                     style={filterState === f ? active : inactive}
                     key={filters.indexOf(f)}
-                    className="w-fit px-1 py-1 rounded-full transition-all ease hover:italic text-xs md:text-base"
+                    className="w-fit px-1 py-1 rounded-full transition-all ease hover:italic text-xs sm:text-base"
                     onClick={() => { handleFilter(f) }}>
                     <Link>{f}</Link>
                   </button>)

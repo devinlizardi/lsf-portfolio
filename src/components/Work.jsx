@@ -68,8 +68,8 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
   // styles
 
   const expandedStyle = expand ? {
-    height: '300px',
-    maxHeight: '300px',
+    height: '240px',
+    maxHeight: '240px',
     position: 'relative',
     backgroundColor: '#4f4f4f',
     color: 'white',
@@ -93,7 +93,7 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
         <span className="flex-none w-[75px] text-right">{date}</span>
 
         {/* mobile expanded */}
-        {expand && <div className="absolute top-12 left-0 w-full h-[80%]">
+        {expand && <div className="absolute top-9 left-0 w-full h-[80%]">
           <iframe
             src={url}
             allow="fullscreen;"
