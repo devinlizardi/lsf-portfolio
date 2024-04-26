@@ -36,7 +36,7 @@ const WorkList = ({ filterState, works }) => {
 
   return (
     <>
-      <ul className="gap-4">
+      <ul className="gap-4" id="list">
         {(function () {
           const components = []
           for (let i = 0; i < works.length; i++) {

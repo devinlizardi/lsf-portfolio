@@ -7,6 +7,7 @@ import svg from './../assets/x-icon.svg'
 const Work = ({ title, type, date, url, push, pop, order, id }) => {
   const [mode, setMode] = useState(false)
   const [expand, setExpand] = useState(false)
+  const [bounds, setBounds] = useState()
 
   // handlers, functions
 
@@ -42,10 +43,20 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
     }
   }
 
+  const updateBounds = () => {
+    const temp = document.getElementById('list').getBoundingClientRect()
+    setBounds({ left: temp.left - 20, right: temp.right - 525 })
+  }
+
   // effects
 
   useEffect(() => {
+    updateBounds()
+  }, [])
+
+  useEffect(() => {
     window.addEventListener('resize', () => {
+      updateBounds()
       if (!desktop() && mode) {
         close()
       } else if (desktop() && expand) {
@@ -69,7 +80,7 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
   // link styles
 
   const linkClass = "w-full bg-[#7f7f7f] bg-opacity-0 text-left hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between transition-all duration-100 px-4 font-light ease-in"
-  const linkClassActive = ""
+  const linkClassActive = "bg-opacity-80"
 
   return (
     <>
@@ -77,9 +88,7 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
       <button className={classNames(linkClass, { [linkClassActive]: mode })}
         onClick={handleClick}
         style={expandedStyle}>
-        <a className="w-[155px] md:w-[270px] md:-mr-[200px] relative">
-          {mode && <div className="h-2 w-2 rounded-full bg-pink-400 absolute top-2 -left-4" />}
-          {title}</a>
+        <a className="w-[155px] md:w-[270px] md:-mr-[200px] relative">{title}</a>
         <span className="w-[125px]">{type}</span>
         <span className="flex-none w-[75px] text-right">{date}</span>
 
@@ -95,7 +104,7 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
 
       {/* desktop window */}
       {mode && desktop() &&
-        <Draggable onStart={push}>
+        <Draggable onStart={push} bounds={bounds}>
           <button
             className="w-fit h-fit bg-[#757575] text-white absolute rounded
                focus:border-green-400 border border-[#757575]"
@@ -107,13 +116,13 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
               <a className="w-[125px]">{title}</a>
               <span className="w-[110px]">{type}</span>
               <span className="flex-none">{date}</span>
-              <button
+              <div
                 onMouseDown={close}
                 onTouchStart={close}
                 className="hover:bg-[#6b6b6b] w-8 h-8 rounded-full grid 
                     place-content-center m-1 transition duration-300 ease cursor-pointer z-50">
                 <img src={svg} className="invert scale-[30%]" />
-              </button>
+              </div>
             </div>
             <div className="px-4 w-full">
               <iframe

@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col gap-16 p-4">
+      <div className="flex flex-col gap-16 p-4 text-xs md:text-base">
         <div className='max-w-5xl'>
           <h2 className="font-light">
             <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES
@@ -39,7 +39,7 @@ function App() {
         </div>
         <div className="flex w-full justify-between items-center -mb-8">
           <Timeline filter={filterState} handleFilter={handleFilter} />
-          <div className="w-fit px-4 overflow-scroll rounded-full bg-[#8a8a8a] bg-opacity-50 flex justify-evenly mx-4 text-sm no-scrollbar">
+          <div className="w-fit px-2 overflow-scroll rounded-full bg-[#8a8a8a] bg-opacity-50 flex justify-evenly mx-4 no-scrollbar">
             {(function () {
               const components = []
               filters.forEach(f => {
@@ -47,7 +47,7 @@ function App() {
                   <button
                     style={filterState === f ? active : inactive}
                     key={filters.indexOf(f)}
-                    className="w-fit px-1 py-1 rounded-full transition-all ease hover:italic"
+                    className="w-fit px-1 py-1 rounded-full transition-all ease hover:italic text-xs md:text-base"
                     onClick={() => { handleFilter(f) }}>
                     <Link>{f}</Link>
                   </button>)
