@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
+import classNames from "classnames"
 import Draggable from 'react-draggable'
 import svg from './../assets/x-icon.svg'
 
@@ -65,15 +66,20 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
     maxHeight: '48px',
   }
 
+  // link styles
+
+  const linkClass = "w-full bg-[#7f7f7f] bg-opacity-0 text-left hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between transition-all duration-100 px-4 font-light ease-in"
+  const linkClassActive = ""
+
   return (
     <>
       {/* link */}
-      <button className="w-full bg-[#7f7f7f] bg-opacity-0 text-left
-            hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between 
-            transition-all duration-100 px-4 font-light ease-in"
+      <button className={classNames(linkClass, { [linkClassActive]: mode })}
         onClick={handleClick}
         style={expandedStyle}>
-        <a className="w-[155px] md:w-[270px] md:-mr-[200px]">{title}</a>
+        <a className="w-[155px] md:w-[270px] md:-mr-[200px] relative">
+          {mode && <div className="h-2 w-2 rounded-full bg-pink-400 absolute top-2 -left-4" />}
+          {title}</a>
         <span className="w-[125px]">{type}</span>
         <span className="flex-none w-[75px] text-right">{date}</span>
 
