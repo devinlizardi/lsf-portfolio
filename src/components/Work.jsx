@@ -8,6 +8,7 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
   const [mode, setMode] = useState(false)
   const [expand, setExpand] = useState(false)
   const [bounds, setBounds] = useState()
+  const [grabbing, setGrabbing] = useState(false)
 
   // handlers, functions
 
@@ -39,6 +40,11 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
     } else {
       setExpand(e => !e)
     }
+  }
+
+  const handleGrab = () => {
+    push()
+    setGrabbing(true)
   }
 
   const updateBounds = () => {
@@ -101,11 +107,11 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
 
       {/* desktop window */}
       {mode && desktop() &&
-        <Draggable onStart={push} bounds={bounds}>
+        <Draggable onStart={handleGrab} onStop={() => setGrabbing(false)} bounds={bounds}>
           <button
             className="w-fit h-fit bg-[#757575] text-white absolute rounded
                focus:border-green-400 border border-[#757575]"
-            style={{ animation: 'open 75ms', zIndex: order * 10 }}
+            style={{ animation: 'open 75ms', zIndex: order * 10, cursor: grabbing ? 'grabbing' : 'grab' }}
             onKeyDown={handleKeyDown}
             id={`work-${id}`}
           >
