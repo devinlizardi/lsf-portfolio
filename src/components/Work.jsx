@@ -19,6 +19,7 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
 
   const close = () => {
     setMode(false)
+    setExpand(false)
     pop()
   }
 
@@ -33,11 +34,8 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
 
   const handleClick = () => {
     if (desktop()) {
-      if (mode) {
-        close()
-      } else {
-        open()
-      }
+      (mode ? close : open)()
+      setExpand(false)
     } else {
       setExpand(e => !e)
     }
@@ -59,10 +57,9 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
       updateBounds()
       if (!desktop() && mode) {
         close()
-      } else if (desktop() && expand) {
-        setExpand(false)
       }
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mode, expand])
 
   // styles
