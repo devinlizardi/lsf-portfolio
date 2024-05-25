@@ -115,19 +115,20 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
             onKeyDown={handleKeyDown}
             id={`work-${id}`}
           >
-            <div className="flex w-full justify-between items-center px-4">
-              <a className="w-[125px]">{title}</a>
-              <span className="w-[110px]">{type}</span>
-              <span className="flex-none">{date}</span>
+            <div className="flex w-full justify-between items-center px-4 pt-2 text-sm">
               <div
                 onMouseDown={close}
                 onTouchStart={close}
-                className="hover:bg-[#6b6b6b] w-8 h-8 rounded-full grid 
-                    place-content-center m-1 transition duration-300 ease cursor-pointer z-50">
-                <img src={svg} className="invert scale-[30%]" />
+                className="hover:bg-[#6b6b6b] w-7 h-7 rounded-full grid 
+                    place-content-center m-1 transition duration-300 ease 
+                    cursor-pointer z-50 absolute left-1">
+                <img src={svg} className="scale-[30%]" />
               </div>
+              <a className="ml-5">{title}</a>
+              <span className="">{type}</span>
+              <span className="flex-none">{date}</span>
             </div>
-            <div className="px-4 w-full">
+            <div className="px-4 w-full" style={{ clipPath: 'inset(5% 0)' }}>
               <iframe
                 src={url}
                 className="h-[300px] w-[480px]"
