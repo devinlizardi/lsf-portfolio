@@ -80,7 +80,7 @@ const Profile = () => {
 
       <div className="h-24" />
 
-      <div
+      {!mode && <div
         className="fixed bottom-4 right-4 transition-transform
     hover:scale-125 hover:-translate-x-12 hover:-translate-y-8
     flex flex-col gap-2"
@@ -93,7 +93,7 @@ const Profile = () => {
           className="w-[200px] md:w-[300px] rounded">
           <source src={video} type="video/mp4" />
         </video>
-      </div>
+      </div>}
 
     </div>
   )
