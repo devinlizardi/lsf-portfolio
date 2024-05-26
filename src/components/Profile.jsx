@@ -8,6 +8,9 @@ import marbleForwardStatic from './../assets/marbles/marble-forward.png'
 import marbleBackwardGif from './../assets/marbles/Backward-Button-100px.gif'
 import marbleBackwardStatic from './../assets/marbles/marble-backward.png'
 
+import closeX from '../assets/x-icon.svg'
+import video from '../assets/LSF_01_COLOR.mp4'
+
 const Profile = () => {
   const [mode, setMode] = useState(true) // true - formal, false - informal
   const [playing, setPlaying] = useState(false)
@@ -73,6 +76,23 @@ const Profile = () => {
         <a href="https://www.instagram.com/lsf.mov/">Instagram</a><br />
         <a href="https://vimeo.com/lsfnyc">Vimeo</a><br />
         <a href="https://linktr.ee/somdolucas">Music</a>
+      </div>
+
+      <div className="h-24" />
+
+      <div
+        className="fixed bottom-4 right-4 transition-transform
+    hover:scale-125 hover:-translate-x-12 hover:-translate-y-8
+    flex flex-col gap-2"
+      >
+        <img src={closeX}
+          className="w-2 self-end invisible"
+          alt="Close" />
+        <video controls autoPlay preload muted controlsList="nofullscreen"
+          className="w-[200px] md:w-[300px] rounded"
+          style={{ clipPath: 'inset(15px 0)' }}>
+          <source src={video} type="video/mp4" />
+        </video>
       </div>
 
     </div>
