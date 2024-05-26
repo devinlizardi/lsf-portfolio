@@ -121,7 +121,7 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
                 onTouchStart={close}
                 className="hover:bg-[#6b6b6b] w-7 h-7 rounded-full grid 
                     place-content-center m-1 transition duration-300 ease 
-                    cursor-pointer z-50 absolute left-1">
+                    cursor-pointer z-50 absolute left-1 top-[1px]">
                 <img src={svg} className="scale-[30%]" />
               </div>
               <a className="ml-5">{title}</a>

@@ -88,9 +88,9 @@ const Profile = () => {
         <img src={closeX}
           className="w-2 self-end invisible"
           alt="Close" />
-        <video controls autoPlay preload muted controlsList="nofullscreen"
-          className="w-[200px] md:w-[300px] rounded"
-          style={{ clipPath: 'inset(15px 0)' }}>
+        <video controls autoPlay preload muted playsInline
+          controlsList="nofullscreen"
+          className="w-[200px] md:w-[300px] rounded">
           <source src={video} type="video/mp4" />
         </video>
       </div>
