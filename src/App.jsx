@@ -11,7 +11,7 @@ function App() {
   const nonMusicWorks = works.filter(w => w.type != 'music')
 
   useEffect(() => {
-    if (searchParams.size > 0) {
+    if (searchParams.size > 0 && searchParams.get('filter')) {
       setFilter(searchParams.get('filter'))
     }
   }, [searchParams])
