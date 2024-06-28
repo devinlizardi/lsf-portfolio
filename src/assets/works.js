@@ -21,7 +21,7 @@ export default [
     "url": "https://player.vimeo.com/video/892776349"
   },
   {
-    "title": "COS NY Fashion Week",
+    "title": "COS NYFW",
     "type": "editor",
     "date": "sep 2023",
     "filter": "freelance",
@@ -49,7 +49,7 @@ export default [
     "url": "https://player.vimeo.com/video/892776311"
   },
   {
-    "title": "Hugo Boss Miami Spring '23",
+    "title": "Hugo Boss",
     "type": "editor",
     "filter": "freelance",
     "date": "mar 2023",
