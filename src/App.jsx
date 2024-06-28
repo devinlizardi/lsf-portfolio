@@ -31,11 +31,9 @@ function App() {
         <div className='max-w-5xl'>
           <h2 className="font-light">
             <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES
-              FERREIRA </Link>is an editor and creative with 5+ years of post-production experience.
-            This website features his freelance video work and commercial portfolio  as a full-time
-            assistant editor at <a href="https://arcadeedit.com/"
-              className="underline underline-offset-2 hover:decoration-white">Arcade Edit</a>, an award winning editing
-            company.</h2>
+              FERREIRA </Link>is an editor and creative with 5+ years of post-production and
+            video-making expertise. This website features his freelance video work and
+            commercial advertising portfolio for broadcast and social media.</h2>
         </div>
         <div className="flex w-full justify-between items-center -mb-8">
           <Timeline filter={filterState} handleFilter={handleFilter} />
