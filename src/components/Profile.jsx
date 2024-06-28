@@ -10,10 +10,12 @@ import marbleBackwardStatic from './../assets/marbles/marble-backward.png'
 
 import closeX from '../assets/x-icon.svg'
 import video from '../assets/LSF_01_COLOR.mp4'
+import resume from '../assets/Lucas_2024.pdf'
 
 const Profile = () => {
   const [mode, setMode] = useState(true) // true - formal, false - informal
   const [playing, setPlaying] = useState(false)
+  const noInformal = true
 
   const handeClick = () => {
     setMode(!mode)
@@ -26,7 +28,8 @@ const Profile = () => {
   return (
     <div className="p-12 font-normal">
 
-      <button
+      {noInformal && <p className="mb-8">-</p>}
+      {!noInformal && <button
         className="flex gap-3 items-center mb-4 -ml-4"
         onClick={handeClick}>
 
@@ -53,7 +56,7 @@ const Profile = () => {
 
         <h1 className=" font-bold">{mode ? "FORMAL" : "INFORMAL"}</h1>
 
-      </button>
+      </button>}
 
       <div className="max-w-3xl">
         {mode ? <Formal /> : <Informal />}
@@ -61,7 +64,7 @@ const Profile = () => {
 
       <br /><br />
 
-      <div className="ml-12 leading-loose">
+      <div className="leading-loose">
         <h3 className="italic font-bold">CONTACT</h3>
         <h4><a
           href="mailto:lsf.move@gmail.com"
@@ -70,13 +73,15 @@ const Profile = () => {
         +1 786-547-2024
       </div>
       <br /><br />
-      <div className="ml-40 leading-loose text-right w-[120px] [&>a:hover]:text-[#73fc7a]">
-        <h3 className="italic font-bold">LINKS</h3>
-        <a href="http://www.linkedin.com/in/lsfnyc">LinkedIn</a><br />
-        <a href="https://www.instagram.com/lsf.mov/">Instagram</a><br />
-        <a href="https://vimeo.com/lsfnyc">Vimeo</a><br />
-        <a href="https://linktr.ee/somdolucas">Music</a>
-      </div>
+      <ul className="relative -top-36 left-[max(100px,_30vw)] leading-loose text-right w-[120px] 
+                    [&>li:hover]:text-[#73fc7a] [&>li:hover]:cursor-pointer">
+        <li className="italic font-bold">LINKS</li>
+        <li><a href="http://www.linkedin.com/in/lsfnyc">LinkedIn</a></li>
+        <li><a href="https://vimeo.com/lsfnyc">Vimeo</a></li>
+        <li><a href="https://www.instagram.com/lsf.mov/">Instagram</a></li>
+        <li><a href="https://linktr.ee/somdolucas">Music</a></li>
+        <li className="text-[#73fc7a]"><a href={resume}>Resume</a></li>
+      </ul>
 
       <div className="h-24" />
 
