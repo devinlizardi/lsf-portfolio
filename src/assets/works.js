@@ -8,7 +8,7 @@ export default [
   },
   {
     "title": "Sanches Home",
-    "type": "self produced",
+    "type": "director-editor",
     "date": "oct 2023",
     "filter": "freelance",
     "url": "https://player.vimeo.com/video/906901434"
@@ -154,21 +154,21 @@ export default [
     "url": "https://player.vimeo.com/video/906901394"
   },
   {
-    "title": "College Archives The NY Commuter",
+    "title": "College Archives pt. 3",
     "type": "director-editor",
     "filter": "freelance",
     "date": "may 2018",
     "url": "https://player.vimeo.com/video/906901332"
   },
   {
-    "title": "College Archives MMC Study Abroad",
+    "title": "College Archives pt. 2",
     "type": "director-editor",
     "filter": "freelance",
     "date": "may 2017",
     "url": "https://player.vimeo.com/video/906901315"
   },
   {
-    "title": "College Archives Barcelona",
+    "title": "College Archives pt. 1",
     "type": "director-editor",
     "filter": "freelance",
     "date": "dec 2016",
