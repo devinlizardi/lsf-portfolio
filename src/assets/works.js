@@ -168,7 +168,7 @@ export default [
     "url": "https://player.vimeo.com/video/906901380"
   },
   {
-    "title": "Harley Davidson Freedom Stories",
+    "title": "Harley Davidson",
     "type": "director-editor",
     "filter": "freelance",
     "date": "jan 2019",
