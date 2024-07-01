@@ -80,15 +80,13 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
     maxHeight: '48px',
   }
 
-  // link styles
-
   const linkClass = "w-full bg-[#7f7f7f] bg-opacity-0 text-left hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between transition-all duration-100 px-4 font-light ease-in"
-  const linkClassActive = "bg-opacity-80"
+  const linkClassActive = "bg-opacity-30"
 
   return (
     <>
       {/* link */}
-      <button className={classNames(linkClass, { [linkClassActive]: mode })}
+      <button className={classNames(linkClass, { [linkClassActive]: mode }, 'slideIn')}
         onClick={handleClick}
         style={expandedStyle}>
         <a className="w-[155px] md:w-[270px] md:-mr-[200px] relative">{title}</a>

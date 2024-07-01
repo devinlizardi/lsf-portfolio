@@ -10,18 +10,30 @@ function App() {
   const filters = ['freelance', 'commercial']
   const nonMusicWorks = works.filter(w => w.type != 'music')
 
+  // on load
   useEffect(() => {
     if (searchParams.size > 0 && searchParams.get('filter')) {
       setFilter(searchParams.get('filter'))
     }
   }, [searchParams])
 
+  const [dynamicWorksList, setList] = useState([])
+  useEffect(() => {
+    for (let i = 0; i < nonMusicWorks.length + 1; i++) {
+      setTimeout(() => {
+        setList(nonMusicWorks.slice(0, i))
+      }, i * 1000)
+    }
+  }, [])
+
+  // handlers
   const handleFilter = (newFilter) => {
     const alternate = !newFilter || (filterState === newFilter)
     setFilter(alternate ? 'none' : newFilter)
     setSearchParams(alternate ? {} : { "filter": newFilter })
   }
 
+  // styles
   const active = { fontStyle: "italic", color: 'white' }
   const inactive = {}
 
@@ -54,7 +66,7 @@ function App() {
             })()}
           </div>
         </div>
-        <WorkList filterState={filterState} works={nonMusicWorks} />
+        <WorkList filterState={filterState} works={dynamicWorksList} />
       </div>
     </>
   )

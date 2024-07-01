@@ -42,7 +42,7 @@ const WorkList = ({ filterState, works }) => {
           for (let i = 0; i < works.length; i++) {
             if (filterState === 'none' || works[i].filter === filterState) {
               components.push(
-                <li key={i}>
+                <li key={i} id={`item-${i}`}>
                   <Work
                     title={works[i].title}
                     type={works[i].type}
