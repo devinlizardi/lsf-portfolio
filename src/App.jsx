@@ -17,12 +17,22 @@ function App() {
     }
   }, [searchParams])
 
-  const [dynamicWorksList, setList] = useState([])
+  // dynamic work list loading
+  const defaultItem = {
+    title: "#########",
+    type: "#########",
+    filter: "",
+    date: "#########",
+    url: ""
+  }
+  const [dynamicWorksList, setList] = useState(Array.from({ length: nonMusicWorks.length }, () => {
+    return defaultItem
+  }))
   useEffect(() => {
     for (let i = 0; i < nonMusicWorks.length + 1; i++) {
       setTimeout(() => {
-        setList(nonMusicWorks.slice(0, i))
-      }, i * 1000)
+        setList([...nonMusicWorks.slice(0, i), ...dynamicWorksList.slice(i)])
+      }, i * 15)
     }
   }, [])
 

@@ -86,7 +86,7 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
   return (
     <>
       {/* link */}
-      <button className={classNames(linkClass, { [linkClassActive]: mode }, 'slideIn')}
+      <button className={classNames(linkClass, { [linkClassActive]: mode })}
         onClick={handleClick}
         style={expandedStyle}>
         <a className="w-[155px] md:w-[270px] md:-mr-[200px] relative">{title}</a>
