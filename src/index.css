@@ -41,7 +41,7 @@
 }
 
 .slideIn {
-  animation: SlideIn ease-out 100ms;
+  animation: SlideIn ease-out 200ms;
 }
 
 @keyframes SlideIn {
