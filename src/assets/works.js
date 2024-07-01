@@ -1,5 +1,26 @@
 export default [
   {
+    "title": "La Bella Cubana",
+    "type": "director-editor",
+    "date": "jun 2024",
+    "filter": "freelance",
+    "url": "https://player.vimeo.com/video/972519385"
+  },
+  {
+    "title": "McDonalds",
+    "type": "assistant editor",
+    "date": "apr 2024",
+    "filter": "commercial",
+    "url": "https://player.vimeo.com/video/972512684"
+  },
+  {
+    "title": "Volkswagen",
+    "type": "assistant editor",
+    "date": "feb 2024",
+    "filter": "commercial",
+    "url": "https://player.vimeo.com/video/972512645"
+  },
+  {
     "title": "SeatGeek",
     "type": "assistant editor",
     "date": "nov 2023",
@@ -29,7 +50,7 @@ export default [
   },
   {
     "title": "America Erased",
-    "type": "cutting assistant",
+    "type": "cutdowns editor",
     "date": "aug 2023",
     "filter": "commercial",
     "url": "https://player.vimeo.com/video/892776339"
