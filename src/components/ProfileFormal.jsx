@@ -11,7 +11,7 @@ const Formal = () => {
         He began his career in commercial post production at the company vault, in charge of creating editorial
         archives and managing physical and digital inventory. He developed a strong foundation for
         post-production protocol which greatly enhances his workflow now as an editor, whether working
-        independently on a freelance project or in commercial advertising. He has worked top agencies
+        independently on a freelance project or in commercial advertising. He has worked with top agencies
         and global brands delivering high quality work for broadcast and social. He is skilled at working
         with clients remotely or inside the edit room.
       </p>
