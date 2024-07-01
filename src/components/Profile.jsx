@@ -23,7 +23,7 @@ const Profile = () => {
         </div>
         <ul className="leading-loose text-right w-[120px] [&>li:hover]:text-[#73fc7a] 
                         [&>li:hover]:cursor-pointer text-xs sm:text-base">
-          <li className="italic font-bold">LINKS</li>
+          <p className="italic font-bold">LINKS</p>
           <li><a href="http://www.linkedin.com/in/lsfnyc">LinkedIn</a></li>
           <li><a href="https://vimeo.com/lsfnyc">Vimeo</a></li>
           <li><a href="https://www.instagram.com/lsf.mov/">Instagram</a></li>
