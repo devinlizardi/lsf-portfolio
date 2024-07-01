@@ -11,6 +11,7 @@ import marbleBackwardStatic from './../assets/marbles/marble-backward.png'
 import closeX from '../assets/x-icon.svg'
 import video from '../assets/LSF_01_COLOR.mp4'
 import resume from '../assets/Lucas_2024.pdf'
+import { Link } from "react-router-dom"
 
 const Profile = () => {
   const [mode, setMode] = useState(true) // true - formal, false - informal
@@ -28,7 +29,7 @@ const Profile = () => {
   return (
     <div className="p-12 font-normal">
 
-      {noInformal && <p className="mb-8">-</p>}
+      {noInformal && <Link to='/' className="mb-8 block hover:text-yellow-300">-</Link>}
       {!noInformal && <button
         className="flex gap-3 items-center mb-4 -ml-4"
         onClick={handeClick}>
@@ -58,13 +59,13 @@ const Profile = () => {
 
       </button>}
 
-      <div className="max-w-3xl">
+      <div className="max-w-3xl text-justify text-xs sm:text-base">
         {mode ? <Formal /> : <Informal />}
       </div>
 
       <br /><br />
 
-      <div className="leading-loose">
+      <div className="leading-loose text-xs sm:text-base">
         <h3 className="italic font-bold">CONTACT</h3>
         <h4><a
           href="mailto:lsf.move@gmail.com"
@@ -73,8 +74,8 @@ const Profile = () => {
         +1 786-547-2024
       </div>
       <br /><br />
-      <ul className="relative -top-36 left-[max(100px,_30vw)] leading-loose text-right w-[120px] 
-                    [&>li:hover]:text-[#73fc7a] [&>li:hover]:cursor-pointer">
+      <ul className="relative -top-[120px] left-[max(100px,_30vw)] leading-loose text-right w-[120px] 
+                    [&>li:hover]:text-[#73fc7a] [&>li:hover]:cursor-pointer text-xs sm:text-base">
         <li className="italic font-bold">LINKS</li>
         <li><a href="http://www.linkedin.com/in/lsfnyc">LinkedIn</a></li>
         <li><a href="https://vimeo.com/lsfnyc">Vimeo</a></li>
