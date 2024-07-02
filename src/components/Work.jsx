@@ -89,7 +89,7 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
       <button className={classNames(linkClass, { [linkClassActive]: mode })}
         onClick={handleClick}
         style={expandedStyle}>
-        <a className="w-[155px] md:w-[270px] md:-mr-[200px] relative">{title}</a>
+        <a className="w-[155px] md:w-[270px] md:-mr-[200px] relative"><div className="loader" />{title}</a>
         <span className="w-[125px]">{type}</span>
         <span className="flex-none w-[75px] text-right">{date}</span>
 
