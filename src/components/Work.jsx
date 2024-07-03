@@ -3,12 +3,23 @@ import { useEffect, useState } from "react"
 import classNames from "classnames"
 import Draggable from 'react-draggable'
 import svg from './../assets/x-icon.svg'
+// import openSVG from '../assets/arrow-top-right.svg'
+import triangeSVG from '../assets/iconmonstr-triangle-1.svg'
 
-const Work = ({ title, type, date, url, push, pop, order, id }) => {
-  const [mode, setMode] = useState(false)
-  const [expand, setExpand] = useState(false)
-  const [bounds, setBounds] = useState()
-  const [grabbing, setGrabbing] = useState(false)
+const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) => {
+  const [mode, setMode] = useState(false)           // desktop window
+  const [expand, setExpand] = useState(false)       // mobile dropdown
+  const [bounds, setBounds] = useState()            // floating window boundary resize
+  const [grabbing, setGrabbing] = useState(false)   // floating windows
+  const [hovering, setHovering] = useState(false)   // link button hover
+
+  const openFirstElementDelayTime = (28 * 35) + 100 // 28 elements hardcoded, 35ms delay hardcoded
+
+  useEffect(() => {
+    if (id === 0 && !desktop()) {
+      setTimeout(() => { setExpand(true) }, openFirstElementDelayTime)
+    }
+  }, [])
 
   // handlers, functions
 
@@ -80,18 +91,28 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
     maxHeight: '48px',
   }
 
-  const linkClass = "w-full bg-[#7f7f7f] bg-opacity-0 text-left hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between transition-all duration-100 px-4 font-light ease-in"
+  const linkClass = "w-full bg-[#7f7f7f] bg-opacity-0 text-left hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between transition-all duration-100 px-4 font-light ease-in relative"
   const linkClassActive = "bg-opacity-30"
+
+  // eslint-disable-next-line no-unused-vars
+  const openIcon = hovering ? "w-4 -left-6 top-1" : "w-2 -left-5 top-2"
 
   return (
     <>
       {/* link */}
       <button className={classNames(linkClass, { [linkClassActive]: mode })}
         onClick={handleClick}
-        style={expandedStyle}>
-        <a className="w-[155px] md:w-[270px] md:-mr-[200px] relative">{title}</a>
-        <span className="w-[125px]">{type}</span>
-        <span className="flex-none w-[75px] text-right">{date}</span>
+        style={expandedStyle}
+        onMouseEnter={() => { setHovering(true) }}
+        onMouseLeave={() => { setHovering(false) }}
+      >
+        <p className="w-[155px] md:w-[270px] md:-mr-[200px] relative">
+          {/* plus icon next to the elements, for demo */}
+          {/* {desktop() && !mode && <img src={openSVG} className={classNames("absolute transition-all", openIcon)} />} */}
+          {title}
+        </p>
+        <p className="w-[125px]">{type}</p>
+        <p className="flex-none w-[75px] text-right">{date}</p>
 
         {/* mobile expanded */}
         {expand && <div className="absolute top-9 left-0 w-full h-[80%]">
@@ -101,6 +122,14 @@ const Work = ({ title, type, date, url, push, pop, order, id }) => {
             className="w-full h-full"
             allowFullScreen />
         </div>}
+
+        {/* tooltip */}
+        {desktop() && hovering && !hoverOverride &&
+          <span
+            className="absolute bg-black w-24 h-6 -top-6 grid place-content-center text-white rounded-sm tooltip">
+            Click to open
+            <img src={triangeSVG} className="absolute w-2 -bottom-1 left-10 transform -scale-y-100" />
+          </span>}
       </button>
 
       {/* desktop window */}

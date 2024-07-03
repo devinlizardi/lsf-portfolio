@@ -32,7 +32,7 @@ function App() {
     for (let i = 0; i < nonMusicWorks.length + 1; i++) {
       setTimeout(() => {
         setList([...nonMusicWorks.slice(0, i), ...dynamicWorksList.slice(i)])
-      }, i * 25)
+      }, i * 35)
     }
   }, [])
 

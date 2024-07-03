@@ -4,9 +4,11 @@ import { Work } from "./Work"
 
 const WorkList = ({ filterState, works }) => {
   const [stack, setStack] = useState([]) // [ { id } ]
+  const [hoverOverride, setOverride] = useState(false) //TODO: useRef
 
   const push = (id) => {
     const item = stack.find(i => i.id === id)
+    setOverride(true)
     if (item) {
       setStack([item, ...stack.filter(i => i.id !== id)])
     } else {
@@ -42,7 +44,7 @@ const WorkList = ({ filterState, works }) => {
           for (let i = 0; i < works.length; i++) {
             if (filterState === 'none' || works[i].filter === filterState) {
               components.push(
-                <li key={i} id={`item-${i}`}>
+                <li key={i}>
                   <Work
                     title={works[i].title}
                     type={works[i].type}
@@ -52,6 +54,7 @@ const WorkList = ({ filterState, works }) => {
                     pop={pop}
                     order={getOrder(i)}
                     id={i}
+                    hoverOverride={hoverOverride}
                   />
                 </li>
               )
