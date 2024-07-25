@@ -54,6 +54,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) =
   }
 
   const handleClick = () => {
+    setFirstLoad(false)
     if (desktop()) {
       (mode ? close : open)()
       setExpand(false)
@@ -119,7 +120,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) =
       >
         <p className="w-[155px] md:w-[270px] md:-mr-[200px] relative">
           {/* animated opening element */}
-          {isFirstElement && !expand && firstLoad &&
+          {isFirstElement && !expand && firstLoad && !desktop() &&
             <Lottie animationData={animationData} loop={true} className="w-4 absolute -left-5" lottieRef={lottieRef} />
           }
           {title}
