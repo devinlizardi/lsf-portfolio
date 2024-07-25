@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import classNames from "classnames"
 import Draggable from 'react-draggable'
 import svg from './../assets/x-icon.svg'
 // import openSVG from '../assets/arrow-top-right.svg'
-import triangeSVG from '../assets/iconmonstr-triangle-1.svg'
+import triangleSVG from '../assets/iconmonstr-triangle-1.svg'
+import { LoadContext } from "../helpers/LoadContext"
 
 const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) => {
   const [mode, setMode] = useState(false)           // desktop window
@@ -15,9 +16,14 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) =
 
   const openFirstElementDelayTime = (28 * 35) + 100 // 28 elements hardcoded, 35ms delay hardcoded
 
+  const { firstLoad, setFirstLoad } = useContext(LoadContext)
+
   useEffect(() => {
-    if (id === 0 && !desktop()) {
-      setTimeout(() => { setExpand(true) }, openFirstElementDelayTime)
+    if (id === 0 && !desktop() && firstLoad) {
+      setTimeout(() => {
+        setExpand(true)
+        setFirstLoad(false)
+      }, openFirstElementDelayTime)
     }
   }, [])
 
@@ -126,9 +132,9 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) =
         {/* tooltip */}
         {desktop() && hovering && !hoverOverride &&
           <span
-            className="absolute bg-black w-24 h-6 -top-6 grid place-content-center text-white rounded-sm tooltip">
+            className="absolute bg-black w-28 h-6 -top-6 grid place-content-center text-white rounded-sm tooltip">
             Click to open
-            <img src={triangeSVG} className="absolute w-2 -bottom-1 left-10 transform -scale-y-100" />
+            <img src={triangleSVG} className="absolute w-2 -bottom-1 left-12 transform -scale-y-100" />
           </span>}
       </button>
 

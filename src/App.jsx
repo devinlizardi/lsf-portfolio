@@ -1,14 +1,18 @@
-import works from './assets/works'
 import { Link, useSearchParams } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { WorkList } from './components/WorkList'
 import { Timeline } from './components/Timeline'
+import { LoadContext } from './helpers/LoadContext'
+import { DefaultItem, Filters, NonMusicWorkList } from "./helpers/Constants"
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [filterState, setFilter] = useState(searchParams.get('filter') ?? 'none')
-  const filters = ['freelance', 'commercial']
-  const nonMusicWorks = works.filter(w => w.type != 'music')
+  const [firstLoad, setFirstLoad] = useState(true)
+  const worksRef = useRef(NonMusicWorkList)
+  const [dynamicWorksList, setList] = useState(Array.from({ length: worksRef.current.length }, () =>
+    DefaultItem
+  ))
 
   // on load
   useEffect(() => {
@@ -17,24 +21,18 @@ function App() {
     }
   }, [searchParams])
 
-  // dynamic work list loading
-  const defaultItem = {
-    title: "#########",
-    type: "#########",
-    filter: "",
-    date: "#########",
-    url: ""
-  }
-  const [dynamicWorksList, setList] = useState(Array.from({ length: nonMusicWorks.length }, () => {
-    return defaultItem
-  }))
+  // dynamic work list loading, filtering
   useEffect(() => {
-    for (let i = 0; i < nonMusicWorks.length + 1; i++) {
+    worksRef.current = NonMusicWorkList.filter(w => filterState === 'none' || w.filter === filterState)
+    setList(Array.from({ length: worksRef.current.length }, () =>
+      DefaultItem
+    ))
+    for (let i = 0; i < worksRef.current.length + 1; i++) {
       setTimeout(() => {
-        setList([...nonMusicWorks.slice(0, i), ...dynamicWorksList.slice(i)])
+        setList(d => [...worksRef.current.slice(0, i), ...d.slice(i)])
       }, i * 35)
     }
-  }, [])
+  }, [filterState])
 
   // handlers
   const handleFilter = (newFilter) => {
@@ -48,7 +46,7 @@ function App() {
   const inactive = {}
 
   return (
-    <>
+    <LoadContext.Provider value={{ setFirstLoad, firstLoad }}>
       <div className="flex flex-col gap-16 p-4 text-xs sm:text-base">
         <div className='max-w-5xl'>
           <h2 className="font-light">
@@ -62,11 +60,11 @@ function App() {
           <div className="w-fit px-2 overflow-scroll rounded-full bg-[#8a8a8a] bg-opacity-50 flex justify-evenly mx-4 no-scrollbar">
             {(function () {
               const components = []
-              filters.forEach(f => {
+              Filters.forEach(f => {
                 components.push(
                   <button
                     style={filterState === f ? active : inactive}
-                    key={filters.indexOf(f)}
+                    key={Filters.indexOf(f)}
                     className="w-fit px-1 py-1 rounded-full transition-all ease hover:italic text-xs sm:text-base"
                     onClick={() => { handleFilter(f) }}>
                     <Link>{f}</Link>
@@ -76,9 +74,9 @@ function App() {
             })()}
           </div>
         </div>
-        <WorkList filterState={filterState} works={dynamicWorksList} />
+        <WorkList works={dynamicWorksList} />
       </div>
-    </>
+    </LoadContext.Provider>
   )
 }
 

@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Work } from "./Work"
 
-const WorkList = ({ filterState, works }) => {
+const WorkList = ({ works }) => {
   const [stack, setStack] = useState([]) // [ { id } ]
-  const [hoverOverride, setOverride] = useState(false) //TODO: useRef
+  const hoverOverride = useRef(false)
 
   const push = (id) => {
     const item = stack.find(i => i.id === id)
-    setOverride(true)
+    hoverOverride.current = true
     if (item) {
       setStack([item, ...stack.filter(i => i.id !== id)])
     } else {
@@ -42,23 +42,22 @@ const WorkList = ({ filterState, works }) => {
         {(function () {
           const components = []
           for (let i = 0; i < works.length; i++) {
-            if (filterState === 'none' || works[i].filter === filterState) {
-              components.push(
-                <li key={i}>
-                  <Work
-                    title={works[i].title}
-                    type={works[i].type}
-                    date={works[i].date}
-                    url={works[i].url}
-                    push={() => push(i)}
-                    pop={pop}
-                    order={getOrder(i)}
-                    id={i}
-                    hoverOverride={hoverOverride}
-                  />
-                </li>
-              )
-            }
+            components.push(
+              <li key={i}>
+                <Work
+                  title={works[i].title}
+                  type={works[i].type}
+                  date={works[i].date}
+                  url={works[i].url}
+                  push={() => push(i)}
+                  pop={pop}
+                  order={getOrder(i)}
+                  id={i}
+                  hoverOverride={hoverOverride.current}
+                />
+              </li>
+            )
+
           }
           return components
         })()}
