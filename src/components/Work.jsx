@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react"
 import classNames from "classnames"
 import Draggable from 'react-draggable'
+import { useSearchParams } from "react-router-dom"
 import svg from './../assets/x-icon.svg'
 // import openSVG from '../assets/arrow-top-right.svg'
 import triangleSVG from '../assets/iconmonstr-triangle-1.svg'
@@ -14,8 +15,8 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) =
   const [grabbing, setGrabbing] = useState(false)   // floating windows
   const [hovering, setHovering] = useState(false)   // link button hover
 
+  // first load
   const openFirstElementDelayTime = (28 * 35) + 100 // 28 elements hardcoded, 35ms delay hardcoded
-
   const { firstLoad, setFirstLoad } = useContext(LoadContext)
 
   useEffect(() => {
@@ -26,6 +27,14 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) =
       }, openFirstElementDelayTime)
     }
   }, [])
+
+  // reset trigger
+  const [searchParams] = useSearchParams()
+
+  useEffect(() => {
+    setMode(false)
+    setExpand(false)
+  }, [searchParams])
 
   // handlers, functions
 
