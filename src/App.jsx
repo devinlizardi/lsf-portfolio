@@ -47,7 +47,7 @@ function App() {
 
   return (
     <LoadContext.Provider value={{ setFirstLoad, firstLoad }}>
-      <div className="flex flex-col gap-16 p-4 text-xs sm:text-base">
+      <div className="flex flex-col gap-16 p-4 text-xs sm:text-base h-full">
         <div className='max-w-5xl'>
           <h2 className="font-light">
             <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES
