@@ -8,13 +8,13 @@ import triangleSVG from '../assets/iconmonstr-triangle-1.svg'
 import { LoadContext } from "../helpers/LoadContext"
 import Lottie from "lottie-react"
 import animationData from '../assets/Chevron_Right_Build.json'
+import { Window } from "./Window"
 
-const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) => {
-  const [mode, setMode] = useState(false)           // desktop window
-  const [expand, setExpand] = useState(false)       // mobile dropdown
-  const [bounds, setBounds] = useState()            // floating window boundary resize
-  const [grabbing, setGrabbing] = useState(false)   // floating windows
-  const [hovering, setHovering] = useState(false)   // link button hover
+const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, grabOverrideRef }) => {
+  const [mode, setMode] = useState(false)               // desktop window
+  const [expand, setExpand] = useState(false)           // mobile dropdown
+  const [grabbing, setGrabbing] = useState(false)       // floating windows
+  const [hovering, setHovering] = useState(false)       // link button hover
 
   // first load
   const openFirstElementDelayTime = (28 * 35) + 100 // 28 elements hardcoded, 35ms delay hardcoded
@@ -71,31 +71,21 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) =
     }
   }
 
-  const handleGrab = () => {
+  const handleStartGrab = () => {
     push()
-    setGrabbing(true)
-  }
-
-  const updateBounds = () => {
-    const temp = document.getElementById('list').getBoundingClientRect()
-    setBounds({ left: temp.left - 20, right: temp.right - 525 })
+    grabOverrideRef.current = true
   }
 
   // effects
 
   useEffect(() => {
-    updateBounds()
-  }, [])
-
-  useEffect(() => {
     window.addEventListener('resize', () => {
-      updateBounds()
       if (!desktop() && mode) {
         close()
       }
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, expand])
+  }, [mode])
 
   // styles
 
@@ -123,8 +113,8 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) =
       <button className={classNames(linkClass, { [linkClassActive]: mode })}
         onClick={handleClick}
         style={expandedStyle}
-        onMouseEnter={() => { setHovering(true) }}
-        onMouseLeave={() => { setHovering(false) }}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
       >
         <p className="w-[155px] md:w-[270px] md:-mr-[200px] relative">
           {/* animated opening element */}
@@ -156,14 +146,31 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) =
 
       {/* desktop window */}
       {mode && desktop() &&
-        <Draggable onStart={handleGrab} onStop={() => setGrabbing(false)} bounds={bounds}>
+        <Draggable
+          onStart={handleStartGrab}
+          onDrag={() => setGrabbing(true)}
+          onStop={() => setGrabbing(false)}
+          bounds={"body"}
+          defaultPosition={{ x: -240, y: -150 }}>
           <button
             className="w-fit h-fit bg-[#757575] text-white absolute rounded
-               focus:border-green-400 border border-[#757575]"
-            style={{ animation: 'open 75ms', zIndex: order * 10, cursor: grabbing ? 'grabbing' : 'grab' }}
+               focus:border-green-400 border border-[#757575] left-[50vw] top-[50vh]"
+            style={{
+              animation: 'open 900ms',
+              zIndex: order * 10,
+              cursor: grabbing ? 'grabbing' : 'grab',
+            }}
             onKeyDown={handleKeyDown}
             id={`work-${id}`}
           >
+            {/* tooltip */}
+            {!grabOverrideRef.current &&
+              <span
+                className="absolute bg-black w-28 h-6 -top-6 grid place-content-center text-white rounded-sm tooltip">
+                Drag to move
+                <img src={triangleSVG} className="absolute w-2 -bottom-1 left-12 transform -scale-y-100" />
+              </span>}
+
             <div className="flex w-full justify-between items-center px-4 pt-2 text-sm">
               <div
                 onMouseDown={close}
@@ -187,6 +194,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride }) =
           </button>
         </Draggable>
       }
+      <Window mode={mode} order={order} />
     </>
   )
 }
