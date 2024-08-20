@@ -126,18 +126,18 @@ export default [
     "url": "https://player.vimeo.com/video/892116910"
   },
   {
+    "title": "Paramount+",
+    "type": "assistant editor",
+    "filter": "commercial",
+    "date": "mar 2022",
+    "url": "https://player.vimeo.com/video/892118443"
+  },
+  {
     "title": "Penfed",
     "type": "assistant editor",
     "filter": "commercial",
     "date": "feb 2022",
     "url": "https://player.vimeo.com/video/892116900"
-  },
-  {
-    "title": "Paramount+",
-    "type": "assistant editor",
-    "filter": "commercial",
-    "date": "jan 2022",
-    "url": "https://player.vimeo.com/video/892118443"
   },
   {
     "title": "DSG",
