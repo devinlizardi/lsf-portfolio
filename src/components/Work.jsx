@@ -6,7 +6,6 @@ import { useSearchParams } from "react-router-dom"
 import svg from './../assets/x-icon.svg'
 import triangleSVG from '../assets/iconmonstr-triangle-1.svg'
 import { LoadContext } from "../helpers/LoadContext"
-import { Window } from "./Window"
 
 const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, grabOverrideRef }) => {
   const [mode, setMode] = useState(false)               // desktop window
@@ -139,13 +138,12 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
           onStart={handleStartGrab}
           onDrag={() => setGrabbing(true)}
           onStop={() => setGrabbing(false)}
-          bounds={"body"}
-          defaultPosition={{ x: -240, y: -150 }}>
+          bounds={"body"}>
           <button
             className="w-fit h-fit bg-[#757575] text-white absolute rounded
-               focus:border-green-400 border border-[#757575] left-[50vw] top-[50vh]"
+               focus:border-green-400 border border-[#757575]"
             style={{
-              animation: 'open 900ms',
+              animation: 'open 75ms',
               zIndex: order * 10,
               cursor: grabbing ? 'grabbing' : 'grab',
             }}
@@ -183,7 +181,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
           </button>
         </Draggable>
       }
-      <Window mode={mode} order={order} />
+      {/* <Window mode={mode} order={order} /> */}
     </>
   )
 }
