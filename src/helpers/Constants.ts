@@ -11,3 +11,5 @@ export const DefaultItem = {
   date: "#########",
   url: "",
 }
+
+export const Months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]

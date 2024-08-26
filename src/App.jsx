@@ -4,12 +4,15 @@ import { WorkList } from './components/WorkList'
 import { Timeline } from './components/Timeline'
 import { LoadContext } from './helpers/LoadContext'
 import { DefaultItem, Filters, NonMusicWorkList } from "./helpers/Constants"
+import { sortNewLast } from "./helpers/sortWorks"
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [filterState, setFilter] = useState(searchParams.get('filter') ?? 'none')
   const [firstLoad, setFirstLoad] = useState(true)
-  const worksRef = useRef(NonMusicWorkList)
+
+  // set up work list
+  const worksRef = useRef(NonMusicWorkList.sort(sortNewLast))
   const [dynamicWorksList, setList] = useState(Array.from({ length: worksRef.current.length }, () =>
     DefaultItem
   ))

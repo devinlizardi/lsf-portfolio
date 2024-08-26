@@ -6,12 +6,16 @@ import { useSearchParams } from "react-router-dom"
 import svg from './../assets/x-icon.svg'
 import triangleSVG from '../assets/iconmonstr-triangle-1.svg'
 import { LoadContext } from "../helpers/LoadContext"
+import { Months } from "../helpers/Constants"
 
 const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, grabOverrideRef }) => {
   const [mode, setMode] = useState(false)               // desktop window
   const [expand, setExpand] = useState(false)           // mobile dropdown
   const [grabbing, setGrabbing] = useState(false)       // floating windows
   const [hovering, setHovering] = useState(false)       // link button hover
+
+  const d = new Date(date)
+  const formattedDate = date === "#########" ? "#########" : Months[d.getMonth()] + " " + d.getFullYear()
 
   // first load
   const openFirstElementDelayTime = (28 * 35) + 100 // 28 elements hardcoded, 35ms delay hardcoded
@@ -112,7 +116,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
           {title}
         </p>
         <p className="w-[125px]">{type}</p>
-        <p className="flex-none w-[75px] text-right">{date}</p>
+        <p className="flex-none w-[75px] text-right">{formattedDate}</p>
 
         {/* mobile expanded */}
         {expand && <div className="absolute top-9 left-0 w-full h-[80%]">
@@ -169,7 +173,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
               </div>
               <a className="ml-5">{title}</a>
               <span className="">{type}</span>
-              <span className="flex-none">{date}</span>
+              <span className="flex-none">{formattedDate}</span>
             </div>
             <div className="px-4 w-full" style={{ clipPath: 'inset(5% 0)' }}>
               <iframe
