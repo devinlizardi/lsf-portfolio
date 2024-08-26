@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import classNames from "classnames"
 import Draggable from 'react-draggable'
 import { useSearchParams } from "react-router-dom"
 import svg from './../assets/x-icon.svg'
 import triangleSVG from '../assets/iconmonstr-triangle-1.svg'
 import { LoadContext } from "../helpers/LoadContext"
-import Lottie from "lottie-react"
-import animationData from '../assets/Chevron_Right_Build.json'
 import { Window } from "./Window"
 
 const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, grabOverrideRef }) => {
@@ -102,11 +100,6 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
   const linkClass = "w-full bg-[#7f7f7f] bg-opacity-0 text-left hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between transition-all duration-100 px-4 font-light ease-in relative"
   const linkClassActive = "bg-opacity-30"
 
-  const lottieRef = useRef()
-  // const playAnimation = () => {
-  //   lottieRef.current.play()
-  // }
-
   return (
     <>
       {/* link */}
@@ -117,10 +110,6 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
         onMouseLeave={() => setHovering(false)}
       >
         <p className="w-[155px] md:w-[270px] md:-mr-[200px] relative">
-          {/* animated opening element */}
-          {isFirstElement && !expand && firstLoad && !desktop() &&
-            <Lottie animationData={animationData} loop={true} className="w-4 absolute -left-5" lottieRef={lottieRef} />
-          }
           {title}
         </p>
         <p className="w-[125px]">{type}</p>
