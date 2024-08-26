@@ -5,6 +5,7 @@ import { Work } from "./Work"
 const WorkList = ({ works }) => {
   const [stack, setStack] = useState([]) // [ { id } ]
   const hoverOverride = useRef(false)
+  const grabOverrideRef = useRef(false)
 
   const push = (id) => {
     const item = stack.find(i => i.id === id)
@@ -54,6 +55,7 @@ const WorkList = ({ works }) => {
                   order={getOrder(i)}
                   id={i}
                   hoverOverride={hoverOverride.current}
+                  grabOverrideRef={grabOverrideRef}
                 />
               </li>
             )
