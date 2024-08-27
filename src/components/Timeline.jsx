@@ -7,7 +7,7 @@ const Timeline = ({ filter, handleFilter }) => {
 
   return (
     <span
-      className="flex sm:gap-2 items-start w-[160px] flex-none cursor-pointer"
+      className="flex sm:gap-2 items-start w-[160px] flex-none cursor-pointer relative"
       onClick={() => handleFilter()}
     >
       <h1
@@ -15,7 +15,7 @@ const Timeline = ({ filter, handleFilter }) => {
       >TIMELINE</h1>
 
       {filter !== 'none' && <img src={labelURL}
-        className='w-10 border-0 border-opacity-0 border-none'
+        className='w-10 border-0 border-opacity-0 border-none absolute -right-4'
       />}
 
     </span>)

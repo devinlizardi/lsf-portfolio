@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import { WorkList } from './components/WorkList'
 import { Timeline } from './components/Timeline'
 import { LoadContext } from './helpers/LoadContext'
-import { DefaultItem, Filters, NonMusicWorkList } from "./helpers/Constants"
+import { DefaultItem, NonMusicWorkList } from "./helpers/Constants"
 import { sortNewLast } from "./helpers/sortWorks"
 import { Dropdown } from "./components/Dropdown"
 
@@ -45,9 +45,19 @@ function App() {
     setSearchParams(alternate ? {} : { "filter": newFilter })
   }
 
-  // styles
-  const active = { fontStyle: "italic", color: 'white' }
-  const inactive = {}
+  // filters
+
+  const createFilterObj = (titles) => {
+    return Array.from(titles, (title) => {
+      return { title, key: title.slice(0, 3), handler: () => handleFilter(title) }
+    })
+  }
+
+  const createSortObj = (titles) => {
+    return Array.from(titles, (title) => {
+      return { title, key: title.slice(0, 3), handler: () => null }
+    })
+  }
 
   return (
     <LoadContext.Provider value={{ setFirstLoad, firstLoad }}>
@@ -61,24 +71,10 @@ function App() {
         </div>
         <div className="flex w-full justify-between items-end -mb-8">
           <Timeline filter={filterState} handleFilter={handleFilter} />
-          <Dropdown text={'filter'} options={[{ key: 0, title: 'freelance' }, { key: 0, title: 'commercial' }, { key: 0, title: '------------' }]} />
-          <Dropdown text={'sort'} options={[{ key: 0, title: 'old-new' }, { key: 0, title: 'new-old' }, { key: 0, title: 'a-z' }, { key: 0, title: '------------' }]} />
-          {/* <div className="w-fit px-2 overflow-scroll rounded-full bg-[#8a8a8a] bg-opacity-50 flex justify-evenly mx-4 no-scrollbar">
-            {(function () {
-              const components = []
-              Filters.forEach(f => {
-                components.push(
-                  <button
-                    style={filterState === f ? active : inactive}
-                    key={Filters.indexOf(f)}
-                    className="w-fit px-1 py-1 rounded-full transition-all ease hover:italic text-xs sm:text-base"
-                    onClick={() => { handleFilter(f) }}>
-                    <Link>{f}</Link>
-                  </button>)
-              })
-              return components
-            })()}
-          </div> */}
+          <div className="flex gap-2">
+            <Dropdown text={'filter'} options={createFilterObj(['freelance', 'commercial'])} />
+            <Dropdown text={'sort'} options={createSortObj(['old-new', 'new-old', 'a-z', 'z-a'])} />
+          </div>
         </div>
         <WorkList works={dynamicWorksList} />
       </div>
