@@ -5,6 +5,7 @@ import { Timeline } from './components/Timeline'
 import { LoadContext } from './helpers/LoadContext'
 import { DefaultItem, Filters, NonMusicWorkList } from "./helpers/Constants"
 import { sortNewLast } from "./helpers/sortWorks"
+import { Dropdown } from "./components/Dropdown"
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -58,9 +59,11 @@ function App() {
             video-making expertise. This website features his freelance video work and
             commercial advertising portfolio for broadcast and social media.</h2>
         </div>
-        <div className="flex w-full justify-between items-center -mb-8">
+        <div className="flex w-full justify-between items-end -mb-8">
           <Timeline filter={filterState} handleFilter={handleFilter} />
-          <div className="w-fit px-2 overflow-scroll rounded-full bg-[#8a8a8a] bg-opacity-50 flex justify-evenly mx-4 no-scrollbar">
+          <Dropdown text={'filter'} options={[{ key: 0, title: 'freelance' }, { key: 0, title: 'commercial' }, { key: 0, title: '------------' }]} />
+          <Dropdown text={'sort'} options={[{ key: 0, title: 'old-new' }, { key: 0, title: 'new-old' }, { key: 0, title: 'a-z' }, { key: 0, title: '------------' }]} />
+          {/* <div className="w-fit px-2 overflow-scroll rounded-full bg-[#8a8a8a] bg-opacity-50 flex justify-evenly mx-4 no-scrollbar">
             {(function () {
               const components = []
               Filters.forEach(f => {
@@ -75,7 +78,7 @@ function App() {
               })
               return components
             })()}
-          </div>
+          </div> */}
         </div>
         <WorkList works={dynamicWorksList} />
       </div>
