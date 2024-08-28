@@ -11,7 +11,7 @@ export const DropdownWindow = ({ options }) => {
         const { title, key, handler } = option
         const active = searchParams.get('filter') === title
 
-        return <li className="rounded-full w-20 sm:w-28" key={key}>
+        return <li className="rounded-lg w-20 sm:w-28 hover:bg-[#8f8f8fa1]" key={key}>
           <button
             className="rounded-full p-1 w-full text-left cursor-pointer"
             style={{ fontWeight: active ? "bold" : "", backgroundColor: active ? "" : "" }}
