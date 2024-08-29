@@ -28,7 +28,7 @@ const Dropdown = ({ text, options }) => {
         onToggle={(e) => setIsOpen(e.target.open)}
       >
         <summary
-          className="px-2 h-5 sm:h-7 border-2 border-[#868686] rounded-full flex items-center justify-center gap-1 mb-1 hover:bg-[#999999] cursor-pointer"
+          className="px-2 h-5 sm:h-7 border-2 border-[#868686] rounded-full flex items-center justify-center gap-1 mb-1 hover:bg-[#999999] cursor-pointer list-none"
         >
           <p>{text}</p>
           <svg
