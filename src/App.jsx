@@ -4,7 +4,7 @@ import { WorkList } from './components/WorkList'
 import { Timeline } from './components/Timeline'
 import { LoadContext } from './helpers/LoadContext'
 import { DefaultItem, NonMusicWorkList } from "./helpers/Constants"
-import { sortNewLast } from "./helpers/sortWorks"
+import { SORT_FN_MAP } from "./helpers/sortWorks"
 import { Dropdown } from "./components/Dropdown"
 
 function App() {
@@ -13,7 +13,8 @@ function App() {
   const [firstLoad, setFirstLoad] = useState(true)
 
   // set up work list
-  const worksRef = useRef(NonMusicWorkList.sort(sortNewLast))
+  const currSortRef = useRef("new-old")
+  const worksRef = useRef(NonMusicWorkList.sort(SORT_FN_MAP[currSortRef.current]))
   const [dynamicWorksList, setList] = useState(Array.from({ length: worksRef.current.length }, () =>
     DefaultItem
   ))
@@ -25,7 +26,7 @@ function App() {
     }
   }, [searchParams])
 
-  // dynamic work list loading, filtering
+  // dynamic work list loading, runs on filter and sort
   useEffect(() => {
     worksRef.current = NonMusicWorkList.filter(w => filterState === 'none' || w.filter === filterState)
     setList(Array.from({ length: worksRef.current.length }, () =>
@@ -36,26 +37,48 @@ function App() {
         setList(d => [...worksRef.current.slice(0, i), ...d.slice(i)])
       }, i * 35)
     }
-  }, [filterState])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterState, currSortRef.current])
 
   // handlers
+  const handleReset = () => {
+    handleFilter()
+    handleSort()
+  }
+
   const handleFilter = (newFilter) => {
     const alternate = !newFilter || (filterState === newFilter)
     setFilter(alternate ? 'none' : newFilter)
     setSearchParams(alternate ? {} : { "filter": newFilter })
   }
 
-  // filters
+  const handleSort = (newSort) => {
+    const newSortFn = SORT_FN_MAP[newSort]
 
+    // reset case, default to new-old
+    if (currSortRef.current === newSort || !newSortFn) {
+      if (newSort === "new-old") return
+      worksRef.current = worksRef.current.sort(SORT_FN_MAP["new-old"])
+      currSortRef.current = "new-old"
+      setList(worksRef.current)
+      return
+    }
+
+    worksRef.current = worksRef.current.sort(newSortFn)
+    currSortRef.current = newSort
+    setList(worksRef.current)
+  }
+
+  // filters
   const createFilterObj = (titles) => {
     return Array.from(titles, (title) => {
-      return { title, key: title.slice(0, 3), handler: () => handleFilter(title) }
+      return { title, key: title.slice(0, 3), handler: () => handleFilter(title), active: filterState === title }
     })
   }
 
   const createSortObj = (titles) => {
     return Array.from(titles, (title) => {
-      return { title, key: title.slice(0, 3), handler: () => null }
+      return { title, key: title.slice(0, 3), handler: () => handleSort(title), active: currSortRef.current === title }
     })
   }
 
@@ -70,10 +93,10 @@ function App() {
             commercial advertising portfolio for broadcast and social media.</h2>
         </div>
         <div className="flex w-full justify-between items-end -mb-8">
-          <Timeline filter={filterState} handleFilter={handleFilter} />
+          <Timeline filter={filterState} reset={handleReset} />
           <div className="flex gap-2">
             <Dropdown text={'filter'} options={createFilterObj(['freelance', 'commercial'])} />
-            <Dropdown text={'sort'} options={createSortObj(['old-new', 'new-old', 'a-z', 'z-a'])} />
+            <Dropdown text={'sort'} options={createSortObj(['new-old', 'old-new', 'a-z', 'z-a'])} />
           </div>
         </div>
         <WorkList works={dynamicWorksList} />

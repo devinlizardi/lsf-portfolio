@@ -2,13 +2,13 @@
 import cW from './../assets/[c]-white-200x200.png'
 import fW from './../assets/[f]-white-200x200.png'
 
-const Timeline = ({ filter, handleFilter }) => {
+const Timeline = ({ filter, reset }) => {
   const labelURL = { 'commercial': cW, 'freelance': fW }[filter]
 
   return (
     <span
       className="flex sm:gap-2 items-start w-[160px] flex-none cursor-pointer relative"
-      onClick={() => handleFilter()}
+      onClick={reset}
     >
       <h1
         className="text-white hover:text-yellow-300 font-bold italic text-3xl"

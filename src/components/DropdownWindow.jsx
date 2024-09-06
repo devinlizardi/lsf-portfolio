@@ -8,8 +8,7 @@ export const DropdownWindow = ({ options }) => {
   return <div className="absolute bg-[#B9B9B9] border-2 border-[#868686] rounded-xl p-2 z-50 right-0  drop-shadow-sm">
     <ul className="list-none">
       {Array.from(options, (option) => {
-        const { title, key, handler } = option
-        const active = searchParams.get('filter') === title
+        const { title, key, handler, active } = option
 
         return <li className="rounded-lg w-20 sm:w-28 hover:bg-[#8f8f8fa1]" key={key}>
           <button
