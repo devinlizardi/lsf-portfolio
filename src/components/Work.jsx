@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
-import Draggable from 'react-draggable'
 import { useSearchParams } from "react-router-dom"
 import svg from './../assets/x-icon.svg'
 import triangleSVG from '../assets/iconmonstr-triangle-1.svg'
 import { LoadContext } from "../helpers/LoadContext"
 import { Months } from "../helpers/Constants"
+import Moveable from "react-moveable"
 
 const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, grabOverrideRef }) => {
   const [mode, setMode] = useState(false)               // desktop window
@@ -72,9 +72,11 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
     }
   }
 
-  const handleStartGrab = () => {
+  const handleStartGrab = (e) => {
     push()
     grabOverrideRef.current = true
+    e.target.style.transform = e.transform
+    setGrabbing(true)
   }
 
   // effects
@@ -102,6 +104,8 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
 
   const linkClass = "w-full bg-[#7f7f7f] bg-opacity-0 text-left hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between transition-all duration-100 px-4 font-light ease-in relative"
   const linkClassActive = "bg-opacity-30"
+
+  const targetRef = useRef(null)
 
   return (
     <>
@@ -138,14 +142,10 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
 
       {/* desktop window */}
       {mode && desktop() &&
-        <Draggable
-          onStart={handleStartGrab}
-          onDrag={() => setGrabbing(true)}
-          onStop={() => setGrabbing(false)}
-          bounds={"body"}>
+        <>
           <button
             className="w-fit h-fit bg-[#757575] text-white absolute rounded
-               focus:border-green-400 border border-[#757575]"
+                 focus:border-green-400 border border-[#757575] target"
             style={{
               animation: 'open 75ms',
               zIndex: order * 10,
@@ -153,6 +153,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
             }}
             onKeyDown={handleKeyDown}
             id={`work-${id}`}
+            ref={targetRef}
           >
             {/* tooltip */}
             {!grabOverrideRef.current &&
@@ -161,14 +162,13 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
                 Drag to move
                 <img src={triangleSVG} className="absolute w-2 -bottom-1 left-12 transform -scale-y-100" />
               </span>}
-
             <div className="flex w-full justify-between items-center px-4 pt-2 text-sm">
               <div
                 onMouseDown={close}
                 onTouchStart={close}
-                className="hover:bg-[#6b6b6b] w-7 h-7 rounded-full grid 
-                    place-content-center m-1 transition duration-300 ease 
-                    cursor-pointer z-50 absolute left-1 top-[1px]">
+                className="hover:bg-[#6b6b6b] w-7 h-7 rounded-full grid
+                      place-content-center m-1 transition duration-300 ease
+                      cursor-pointer z-50 absolute left-1 top-[1px]">
                 <img src={svg} className="scale-[30%]" />
               </div>
               <a className="ml-5">{title}</a>
@@ -183,9 +183,22 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
                 allowFullScreen />
             </div>
           </button>
-        </Draggable>
+          <div style={{ zIndex: order * 10, }}>
+            <Moveable
+              target={targetRef}
+              draggable
+              scalable
+              keepRatio
+              throttleScale={0}
+              throttleDrag={1}
+              edgeDraggable={false}
+              onDrag={e => handleStartGrab(e)}
+              onScale={e => { e.target.style.transform = e.transform }}
+              renderDirections={['nw', 'ne', 'sw', 'se']}
+            />
+          </div>
+        </>
       }
-      {/* <Window mode={mode} order={order} /> */}
     </>
   )
 }
