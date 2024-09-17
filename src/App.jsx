@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import { WorkList } from './components/WorkList'
 import { Timeline } from './components/Timeline'
 import { LoadContext } from './helpers/LoadContext'
-import { DefaultItem, NonMusicWorkList } from "./helpers/Constants"
+import { DefaultItem, DefaultWorksList } from "./helpers/Constants"
 import { SORT_FN_MAP } from "./helpers/sortWorks"
 import { Dropdown } from "./components/Dropdown"
 
@@ -14,7 +14,7 @@ function App() {
 
   // set up work list
   const currSortRef = useRef("new-old")
-  const worksRef = useRef(NonMusicWorkList.sort(SORT_FN_MAP[currSortRef.current]))
+  const worksRef = useRef(DefaultWorksList.sort(SORT_FN_MAP[currSortRef.current]))
   const [dynamicWorksList, setList] = useState(Array.from({ length: worksRef.current.length }, () =>
     DefaultItem
   ))
@@ -28,7 +28,7 @@ function App() {
 
   // dynamic work list loading, runs on filter and sort
   useEffect(() => {
-    worksRef.current = NonMusicWorkList.filter(w => filterState === 'none' || w.filter === filterState)
+    worksRef.current = DefaultWorksList.filter(w => filterState === 'none' || w.filter === filterState)
     setList(Array.from({ length: worksRef.current.length }, () =>
       DefaultItem
     ))
