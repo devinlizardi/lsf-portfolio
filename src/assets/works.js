@@ -14,7 +14,7 @@ export default [
     "url": "https://player.vimeo.com/video/1010078982"
   },
   {
-    "title": "UScellular Sizzle",
+    "title": "Us Cellular Sizzle",
     "type": "editor",
     "date": "2024-07T00:00",
     "filter": "commercial",
@@ -28,28 +28,28 @@ export default [
     "url": "https://player.vimeo.com/video/1010079056"
   },
   {
-    "title": "Yoo-hoo",
+    "title": "YooHoo",
     "type": "editor",
     "date": "2024-08T00:00",
     "filter": "freelance",
     "url": "https://player.vimeo.com/video/1010079117"
   },
   {
-    "title": "Off-White Celebs",
+    "title": "OFF WHITE Celebs",
     "type": "editor",
     "date": "2024-09T00:00",
     "filter": "freelance",
     "url": "https://player.vimeo.com/video/1010079070"
   },
   {
-    "title": "Off-White NYFW 24",
+    "title": "OFF WHITE nyfw 24",
     "type": "editor",
     "date": "2024-09T00:00",
     "filter": "freelance",
     "url": "https://player.vimeo.com/video/1010079076"
   },
   {
-    "title": "COS NYFW 24",
+    "title": "COS nyfw 24",
     "type": "editor",
     "date": "2024-09T00:00",
     "filter": "freelance",
@@ -98,7 +98,7 @@ export default [
     "url": "https://player.vimeo.com/video/892776349"
   },
   {
-    "title": "COS NYFW 23",
+    "title": "COS nyfw 23",
     "type": "editor",
     "date": "2023-09T00:00",
     "filter": "freelance",
