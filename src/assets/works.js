@@ -1,5 +1,61 @@
 export default [
   {
+    "title": "Dunkin Sizzle",
+    "type": "editor",
+    "date": "2022-10T00:00",
+    "filter": "commercial",
+    "url": "https://player.vimeo.com/video/1010079028"
+  },
+  {
+    "title": "Climate",
+    "type": "editor",
+    "date": "2022-12T00:00",
+    "filter": "commercial",
+    "url": "https://player.vimeo.com/video/1010078982"
+  },
+  {
+    "title": "Us Cellular Sizzle",
+    "type": "editor",
+    "date": "2024-07T00:00",
+    "filter": "commercial",
+    "url": "https://player.vimeo.com/video/1010079084"
+  },
+  {
+    "title": "Geico",
+    "type": "editor",
+    "date": "2024-08T00:00",
+    "filter": "commercial",
+    "url": "https://player.vimeo.com/video/1010079056"
+  },
+  {
+    "title": "YooHoo",
+    "type": "editor",
+    "date": "2024-08T00:00",
+    "filter": "freelance",
+    "url": "https://player.vimeo.com/video/1010079117"
+  },
+  {
+    "title": "OFF WHITE Celebs",
+    "type": "editor",
+    "date": "2024-09T00:00",
+    "filter": "freelance",
+    "url": "https://player.vimeo.com/video/1010079070"
+  },
+  {
+    "title": "OFF WHITE nyfw 24",
+    "type": "editor",
+    "date": "2024-09T00:00",
+    "filter": "freelance",
+    "url": "https://player.vimeo.com/video/1010079076"
+  },
+  {
+    "title": "COS nyfw 24",
+    "type": "editor",
+    "date": "2024-09T00:00",
+    "filter": "freelance",
+    "url": "https://player.vimeo.com/video/1010079007"
+  },
+  {
     "title": "La Bella Cubana",
     "type": "director-editor",
     "date": "2024-06T00:00",
@@ -42,7 +98,7 @@ export default [
     "url": "https://player.vimeo.com/video/892776349"
   },
   {
-    "title": "COS NYFW",
+    "title": "COS nyfw 23",
     "type": "editor",
     "date": "2023-09T00:00",
     "filter": "freelance",
@@ -50,7 +106,7 @@ export default [
   },
   {
     "title": "America Erased",
-    "type": "cutdowns editor",
+    "type": "editor",
     "date": "2023-08T00:00",
     "filter": "commercial",
     "url": "https://player.vimeo.com/video/892776339"
@@ -90,13 +146,13 @@ export default [
     "date": "2023-01T00:00",
     "url": "https://player.vimeo.com/video/892116952"
   },
-  {
-    "title": "Dunkin",
-    "type": "assistant editor",
-    "filter": "commercial",
-    "date": "2022-09T00:00",
-    "url": "https://player.vimeo.com/video/892116944"
-  },
+  // {
+  //   "title": "Dunkin",
+  //   "type": "assistant editor",
+  //   "filter": "commercial",
+  //   "date": "2022-09T00:00",
+  //   "url": "https://player.vimeo.com/video/892116944"
+  // },
   {
     "title": "Mananalu",
     "type": "assistant editor",
@@ -118,13 +174,13 @@ export default [
     "date": "2022-06T00:00",
     "url": "https://player.vimeo.com/video/892116919"
   },
-  {
-    "title": "Midea",
-    "type": "assistant editor",
-    "filter": "commercial",
-    "date": "2022-05T00:00",
-    "url": "https://player.vimeo.com/video/892116910"
-  },
+  // {
+  //   "title": "Midea",
+  //   "type": "assistant editor",
+  //   "filter": "commercial",
+  //   "date": "2022-05T00:00",
+  //   "url": "https://player.vimeo.com/video/892116910"
+  // },
   {
     "title": "Paramount+",
     "type": "assistant editor",
@@ -139,20 +195,20 @@ export default [
     "date": "2022-02T00:00",
     "url": "https://player.vimeo.com/video/892116900"
   },
-  {
-    "title": "DSG",
-    "type": "assistant editor",
-    "filter": "commercial",
-    "date": "2021-12T00:00",
-    "url": "https://player.vimeo.com/video/892116894"
-  },
-  {
-    "title": "Statefarm",
-    "type": "assistant editor",
-    "filter": "commercial",
-    "date": "2021-10T00:00",
-    "url": "https://player.vimeo.com/video/892116885"
-  },
+  // {
+  //   "title": "DSG",
+  //   "type": "assistant editor",
+  //   "filter": "commercial",
+  //   "date": "2021-12T00:00",
+  //   "url": "https://player.vimeo.com/video/892116894"
+  // },
+  // {
+  //   "title": "Statefarm",
+  //   "type": "assistant editor",
+  //   "filter": "commercial",
+  //   "date": "2021-10T00:00",
+  //   "url": "https://player.vimeo.com/video/892116885"
+  // },
   {
     "title": "Sprite",
     "type": "assistant editor",
