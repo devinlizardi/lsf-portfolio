@@ -1,5 +1,61 @@
 export default [
   {
+    "title": "Dunkin Sizzle",
+    "type": "editor",
+    "date": "2022-10T00:00",
+    "filter": "commercial",
+    "url": "https://player.vimeo.com/video/1010079028"
+  },
+  {
+    "title": "Climate",
+    "type": "editor",
+    "date": "2022-12T00:00",
+    "filter": "commercial",
+    "url": "https://player.vimeo.com/video/1010078982"
+  },
+  {
+    "title": "UScellular Sizzle",
+    "type": "editor",
+    "date": "2024-07T00:00",
+    "filter": "commercial",
+    "url": "https://player.vimeo.com/video/1010079084"
+  },
+  {
+    "title": "Geico",
+    "type": "editor",
+    "date": "2024-08T00:00",
+    "filter": "commercial",
+    "url": "https://player.vimeo.com/video/1010079056"
+  },
+  {
+    "title": "Yoo-hoo",
+    "type": "editor",
+    "date": "2024-08T00:00",
+    "filter": "freelance",
+    "url": "https://player.vimeo.com/video/1010079117"
+  },
+  {
+    "title": "Off-White Celebs",
+    "type": "editor",
+    "date": "2024-09T00:00",
+    "filter": "freelance",
+    "url": "https://player.vimeo.com/video/1010079070"
+  },
+  {
+    "title": "Off-White NYFW 24",
+    "type": "editor",
+    "date": "2024-09T00:00",
+    "filter": "freelance",
+    "url": "https://player.vimeo.com/video/1010079076"
+  },
+  {
+    "title": "COS NYFW 24",
+    "type": "editor",
+    "date": "2024-09T00:00",
+    "filter": "freelance",
+    "url": "https://player.vimeo.com/video/1010079007"
+  },
+  {
     "title": "La Bella Cubana",
     "type": "director-editor",
     "date": "2024-06T00:00",
@@ -42,7 +98,7 @@ export default [
     "url": "https://player.vimeo.com/video/892776349"
   },
   {
-    "title": "COS NYFW",
+    "title": "COS NYFW 23",
     "type": "editor",
     "date": "2023-09T00:00",
     "filter": "freelance",
@@ -50,7 +106,7 @@ export default [
   },
   {
     "title": "America Erased",
-    "type": "cutdowns editor",
+    "type": "editor",
     "date": "2023-08T00:00",
     "filter": "commercial",
     "url": "https://player.vimeo.com/video/892776339"
