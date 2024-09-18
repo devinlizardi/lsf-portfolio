@@ -9,7 +9,7 @@ export default [
   },
   {
     "disabled": false,
-    "title": "Climate",
+    "title": "Climate Integrity",
     "type": "editor",
     "date": "2022-12T00:00",
     "filter": "commercial",
@@ -34,7 +34,7 @@ export default [
   {
     "disabled": false,
     "title": "YooHoo",
-    "type": "editor",
+    "type": "director-editor",
     "date": "2024-08T00:00",
     "filter": "freelance",
     "url": "https://player.vimeo.com/video/1010079117"
