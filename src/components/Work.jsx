@@ -148,7 +148,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
                  focus:border-green-400 border border-[#757575] target"
             style={{
               animation: 'open 75ms',
-              zIndex: order * 10,
+              zIndex: (order + 1) * 10,
               cursor: grabbing ? 'grabbing' : 'grab',
               width: '514px'
             }}
@@ -184,7 +184,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
                 allowFullScreen />
             </div>
           </button>
-          <div style={{ zIndex: order * 10, }}>
+          <div style={{ zIndex: (order + 1) * 10, }}>
             <Moveable
               target={targetRef}
               draggable
