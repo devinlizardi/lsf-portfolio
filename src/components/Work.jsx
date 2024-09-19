@@ -150,6 +150,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
               animation: 'open 75ms',
               zIndex: order * 10,
               cursor: grabbing ? 'grabbing' : 'grab',
+              width: '514px'
             }}
             onKeyDown={handleKeyDown}
             id={`work-${id}`}
@@ -193,6 +194,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
               throttleDrag={1}
               edgeDraggable={false}
               onDrag={e => handleStartGrab(e)}
+              onDragEnd={() => setGrabbing(false)}
               onScale={e => { e.target.style.transform = e.transform }}
               renderDirections={['nw', 'ne', 'sw', 'se']}
             />
