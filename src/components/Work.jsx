@@ -2,11 +2,12 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 import { useSearchParams } from "react-router-dom"
+import Moveable from "react-moveable"
 import svg from './../assets/x-icon.svg'
 import triangleSVG from '../assets/iconmonstr-triangle-1.svg'
 import { LoadContext } from "../helpers/LoadContext"
 import { Months } from "../helpers/Constants"
-import Moveable from "react-moveable"
+import { useResetContext } from "../helpers/ResetContext"
 
 const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, grabOverrideRef }) => {
   const [mode, setMode] = useState(false)               // desktop window
@@ -14,6 +15,9 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
   const [grabbing, setGrabbing] = useState(false)       // floating windows
   const [hovering, setHovering] = useState(false)       // link button hover
 
+  const targetRef = useRef(null)                        // drag, scale
+
+  // date formatting
   const d = new Date(date)
   const formattedDate = date === "#########" ? "#########" : Months[d.getMonth()] + " " + d.getFullYear()
 
@@ -33,11 +37,12 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
 
   // reset trigger
   const [searchParams] = useSearchParams()
+  const resetFlag = useResetContext()
 
   useEffect(() => {
     setMode(false)
     setExpand(false)
-  }, [searchParams])
+  }, [searchParams, resetFlag])
 
   // handlers, functions
 
@@ -104,8 +109,6 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
 
   const linkClass = "w-full bg-[#7f7f7f] bg-opacity-0 text-left hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between transition-all duration-100 px-4 font-light ease-in relative"
   const linkClassActive = "bg-opacity-30"
-
-  const targetRef = useRef(null)
 
   return (
     <>

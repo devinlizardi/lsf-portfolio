@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import { WorkList } from './components/WorkList'
 import { Timeline } from './components/Timeline'
 import { LoadContext } from './helpers/LoadContext'
+import { ResetContext } from "./helpers/ResetContext"
 import { DefaultItem, DefaultWorksList } from "./helpers/Constants"
 import { SORT_FN_MAP } from "./helpers/sortWorks"
 import { Dropdown } from "./components/Dropdown"
@@ -40,6 +41,9 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterState, currSortRef.current])
 
+  // reset context
+  const [resetFlag, setResetFlag] = useState(false)
+
   // handlers
   const handleReset = () => {
     handleFilter()
@@ -54,6 +58,7 @@ function App() {
 
   const handleSort = (newSort) => {
     const newSortFn = SORT_FN_MAP[newSort]
+    setResetFlag(f => !f)
 
     // reset case, default to new-old
     if (currSortRef.current === newSort || !newSortFn) {
@@ -69,7 +74,6 @@ function App() {
     setList(worksRef.current)
   }
 
-  // filters
   const createFilterObj = (titles) => {
     return Array.from(titles, (title) => {
       return { title, key: title.slice(0, 3), handler: () => handleFilter(title), active: filterState === title }
@@ -84,23 +88,25 @@ function App() {
 
   return (
     <LoadContext.Provider value={{ setFirstLoad, firstLoad }}>
-      <div className="flex flex-col gap-16 p-4 text-xs sm:text-base h-full">
-        <div className='max-w-5xl'>
-          <h2 className="font-light">
-            <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES
-              FERREIRA </Link>is an editor and creative with 5+ years of post-production and
-            video-making expertise. This website features his freelance video work and
-            commercial advertising portfolio for broadcast and social media.</h2>
-        </div>
-        <div className="flex w-full justify-between items-end -mb-8">
-          <Timeline filter={filterState} reset={handleReset} />
-          <div className="flex gap-2">
-            <Dropdown text={'filter'} options={createFilterObj(['freelance', 'commercial'])} />
-            <Dropdown text={'sort'} options={createSortObj(['new-old', 'old-new', 'a-z', 'z-a'])} />
+      <ResetContext.Provider value={resetFlag}>
+        <div className="flex flex-col gap-16 p-4 text-xs sm:text-base h-full">
+          <div className='max-w-5xl'>
+            <h2 className="font-light">
+              <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES
+                FERREIRA </Link>is an editor and creative with 5+ years of post-production and
+              video-making expertise. This website features his freelance video work and
+              commercial advertising portfolio for broadcast and social media.</h2>
           </div>
+          <div className="flex w-full justify-between items-end -mb-8">
+            <Timeline filter={filterState} reset={handleReset} />
+            <div className="flex gap-2">
+              <Dropdown text={'filter'} options={createFilterObj(['freelance', 'commercial'])} />
+              <Dropdown text={'sort'} options={createSortObj(['new-old', 'old-new', 'a-z', 'z-a'])} />
+            </div>
+          </div>
+          <WorkList works={dynamicWorksList} />
         </div>
-        <WorkList works={dynamicWorksList} />
-      </div>
+      </ResetContext.Provider>
     </LoadContext.Provider>
   )
 }
