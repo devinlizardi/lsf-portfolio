@@ -96,7 +96,6 @@ function App() {
                 FERREIRA </Link>is an editor and creative with 5+ years of post-production and
               video-making expertise. This website features his freelance video work and
               commercial advertising portfolio for broadcast and social media.</h2>
-            <button onClick={() => methodDoesNotExist()}>Break the world</button>
           </div>
           <div className="flex w-full justify-between items-end -mb-8">
             <Timeline filter={filterState} reset={handleReset} />
