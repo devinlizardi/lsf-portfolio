@@ -1,8 +1,6 @@
 import works from "../assets/works"
 
-export const Filters = ["freelance", "commercial"]
-
-export const NonMusicWorkList = works.filter((w) => w.type != "music")
+export const DefaultWorksList = works.filter((w) => !w.disabled)
 
 export const DefaultItem = {
   title: "#########",
