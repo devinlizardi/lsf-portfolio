@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react(), sentryVitePlugin({
     org: "lizzii",
-    project: "javascript-react"
+    project: "lsf-portfolio"
   })],
 
   build: {
