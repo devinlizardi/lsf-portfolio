@@ -10,6 +10,7 @@ import {
 } from "react-router-dom"
 import { Error } from './components/Error.jsx'
 import { Profile } from './components/Profile.jsx'
+import { Admin } from './components/Admin.jsx'
 
 Sentry.init({
   dsn: "https://10e83f35045b793a769230a5f2e35754@o4508089982189568.ingest.us.sentry.io/4508089984090112",
@@ -31,7 +32,9 @@ const router = createBrowserRouter(
       <Route path=':filter' />
     </Route>
     <Route path='profile' element={<Profile />} />
-    <Route path='contact' element={<h1>contact</h1>} /></>
+    <Route path='contact' element={<h1>contact</h1>} />
+    <Route path='admin' element={<Admin />} />
+  </>
   )
 );
 
