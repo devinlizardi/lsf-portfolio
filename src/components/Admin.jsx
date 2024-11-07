@@ -2,6 +2,13 @@ import { useState } from 'react'
 import works from '../assets/works'
 import { AdminWork } from './AdminWork'
 
+/* THIS FEATURE IS INCOMPLETE 11/6/24
+*  the idea was to create a system that's built into the app that can communicate
+*  with the github repo that is hosted statically on Digital Ocean, but that is so low
+*  use-case and high-lift (likely becoming an hosting expense for an api as well) so
+*  I decided to pivot focus away from this
+*/
+
 export const Admin = () => {
   const [numNewItems, setNumNewItems] = useState(0)
 
