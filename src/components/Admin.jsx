@@ -27,20 +27,23 @@ export const Admin = () => {
   const buttonStyle = 'bg-[#8c8c8c] rounded-lg px-2 py-1 hover:bg-[#bfbfbf]'
 
   return <div className="grid place-content-center w-full h-full p-12">
-    <h1 className='text-3xl bold'>Admin Page</h1>
+    <h1 className='text-3xl bold'>Admin Data as of: </h1>
     <span className='w-full h-[1px] bg-[#000] my-4' />
     <div className='flex gap-4'>
       <button className={buttonStyle} onClick={handleAddNew}>Add New Item</button>
-      <button className={buttonStyle} onClick={handleRemove}>Remove New Item</button>
+      {numNewItems > 0 && <button className={buttonStyle} onClick={handleRemove}>Remove New Item</button>}
       <button className={buttonStyle} onClick={() => console.error('no submission yet')}>Submit Changes</button>
     </div>
+
+    {/* new items */}
     {numNewItems > 0 &&
-      <di className='w-full flex flex-col gap-4 my-8 relative'>
+      <div className='w-full flex flex-col gap-4 my-8 relative'>
         {Array.from({ length: numNewItems }, (_, i) => {
           return <AdminWork key={`new-admin-${i}`} id={i} work={newWork} />
         })}
-      </di>
+      </div>
     }
+
     <span className='w-full h-[1px] bg-[#000] my-4' />
     <h2 className='text-2xl'>Current Works</h2>
     <br />
