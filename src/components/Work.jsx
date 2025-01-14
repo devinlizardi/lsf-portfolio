@@ -110,6 +110,9 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
   const linkClass = "w-full bg-[#7f7f7f] bg-opacity-0 text-left hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between transition-all duration-100 px-4 font-light ease-in relative"
   const linkClassActive = "bg-opacity-30"
 
+  const isYoutubeEmbed = url.includes('youtube')
+  const embedStyle = isYoutubeEmbed ? { transform: "scale(0.9)" } : { clipPath: 'inset(5% 0)' }
+
   return (
     <>
       {/* link */}
@@ -179,7 +182,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
               <span className="">{type}</span>
               <span className="flex-none">{formattedDate}</span>
             </div>
-            <div className="px-4 w-full" style={{ clipPath: 'inset(5% 0)' }}>
+            <div className="px-4 w-full" style={embedStyle}>
               <iframe
                 src={url}
                 className="h-[300px] w-[480px]"

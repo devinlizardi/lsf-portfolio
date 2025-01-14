@@ -1,6 +1,14 @@
 export default [
   {
     "disabled": false,
+    "title": "Google Project Astra",
+    "type": "assistant editor",
+    "date": "2024-12T00:00",
+    "filter": "freelance",
+    "url": "https://www.youtube.com/embed/DuA8U4Cfh2Q?si=4jHSDYSA4FHSajJw"
+  },
+  {
+    "disabled": false,
     "title": "Dunkin Sizzle",
     "type": "editor",
     "date": "2022-10T00:00",
