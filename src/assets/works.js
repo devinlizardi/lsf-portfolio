@@ -4,7 +4,7 @@ export default [
     "title": "Google Project Astra",
     "type": "assistant editor",
     "date": "2024-12T00:00",
-    "filter": "freelance",
+    "filter": "commercial",
     "url": "https://www.youtube.com/embed/DuA8U4Cfh2Q?si=4jHSDYSA4FHSajJw"
   },
   {
