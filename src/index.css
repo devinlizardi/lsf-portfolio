@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  background-color: #a2a2a2;
+  background-color: #b6b6b6;
   height: 100%;
 }
 
@@ -17,6 +17,10 @@ body {
 
 :root * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+details summary::-webkit-details-marker {
+  display: none;
 }
 
 @layer utilities {
@@ -33,6 +37,34 @@ body {
 
 .expand {
   animation: expand 1500ms ease;
+}
+
+.moveable-control.moveable-origin {
+  visibility: hidden;
+}
+
+.moveable-line {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: #73fc7a !important;
+  transform-origin: 0px 0.5px;
+}
+
+.moveable-control {
+  position: absolute;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50%;
+  border: none !important;
+  box-sizing: border-box;
+  background: #73fc7a !important;
+  margin-top: -5px !important;
+  margin-left: -5px !important;
+}
+
+.rCS1w3zcxh {
+  z-index: inherit !important;
 }
 
 @keyframes expand {

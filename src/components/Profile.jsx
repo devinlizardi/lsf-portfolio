@@ -1,5 +1,5 @@
 import { Formal } from "./ProfileFormal"
-import resume from '../assets/Lucas_2024.pdf'
+import resume from '../assets/Lucas_2025.pdf'
 import { Link } from "react-router-dom"
 
 const Profile = () => {

@@ -3,8 +3,10 @@ import { useEffect, useRef, useState } from "react"
 import { WorkList } from './components/WorkList'
 import { Timeline } from './components/Timeline'
 import { LoadContext } from './helpers/LoadContext'
-import { DefaultItem, Filters, NonMusicWorkList } from "./helpers/Constants"
-import { sortNewLast } from "./helpers/sortWorks"
+import { ResetContext } from "./helpers/ResetContext"
+import { DefaultItem, DefaultWorksList } from "./helpers/Constants"
+import { SORT_FN_MAP } from "./helpers/sortWorks"
+import { Dropdown } from "./components/Dropdown"
 
 function App() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -12,7 +14,8 @@ function App() {
   const [firstLoad, setFirstLoad] = useState(true)
 
   // set up work list
-  const worksRef = useRef(NonMusicWorkList.sort(sortNewLast))
+  const currSortRef = useRef("new-old")
+  const worksRef = useRef(DefaultWorksList.sort(SORT_FN_MAP[currSortRef.current]))
   const [dynamicWorksList, setList] = useState(Array.from({ length: worksRef.current.length }, () =>
     DefaultItem
   ))
@@ -24,9 +27,9 @@ function App() {
     }
   }, [searchParams])
 
-  // dynamic work list loading, filtering
+  // dynamic work list loading, runs on filter and sort
   useEffect(() => {
-    worksRef.current = NonMusicWorkList.filter(w => filterState === 'none' || w.filter === filterState)
+    worksRef.current = DefaultWorksList.filter(w => filterState === 'none' || w.filter === filterState)
     setList(Array.from({ length: worksRef.current.length }, () =>
       DefaultItem
     ))
@@ -35,50 +38,75 @@ function App() {
         setList(d => [...worksRef.current.slice(0, i), ...d.slice(i)])
       }, i * 35)
     }
-  }, [filterState])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterState, currSortRef.current])
+
+  // reset context
+  const [resetFlag, setResetFlag] = useState(false)
 
   // handlers
+  const handleReset = () => {
+    handleFilter()
+    handleSort()
+  }
+
   const handleFilter = (newFilter) => {
     const alternate = !newFilter || (filterState === newFilter)
     setFilter(alternate ? 'none' : newFilter)
     setSearchParams(alternate ? {} : { "filter": newFilter })
   }
 
-  // styles
-  const active = { fontStyle: "italic", color: 'white' }
-  const inactive = {}
+  const handleSort = (newSort) => {
+    const newSortFn = SORT_FN_MAP[newSort]
+    setResetFlag(f => !f)
+
+    // reset case, default to new-old
+    if (currSortRef.current === newSort || !newSortFn) {
+      if (newSort === "new-old") return
+      worksRef.current = worksRef.current.sort(SORT_FN_MAP["new-old"])
+      currSortRef.current = "new-old"
+      setList(worksRef.current)
+      return
+    }
+
+    worksRef.current = worksRef.current.sort(newSortFn)
+    currSortRef.current = newSort
+    setList(worksRef.current)
+  }
+
+  const createFilterObj = (titles) => {
+    return Array.from(titles, (title) => {
+      return { title, key: title.slice(0, 3), handler: () => handleFilter(title), active: filterState === title }
+    })
+  }
+
+  const createSortObj = (titles) => {
+    return Array.from(titles, (title) => {
+      return { title, key: title.slice(0, 3), handler: () => handleSort(title), active: currSortRef.current === title }
+    })
+  }
 
   return (
     <LoadContext.Provider value={{ setFirstLoad, firstLoad }}>
-      <div className="flex flex-col gap-16 p-4 text-xs sm:text-base h-full">
-        <div className='max-w-5xl'>
-          <h2 className="font-light">
-            <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES
-              FERREIRA </Link>is an editor and creative with 5+ years of post-production and
-            video-making expertise. This website features his freelance video work and
-            commercial advertising portfolio for broadcast and social media.</h2>
-        </div>
-        <div className="flex w-full justify-between items-center -mb-8">
-          <Timeline filter={filterState} handleFilter={handleFilter} />
-          <div className="w-fit px-2 overflow-scroll rounded-full bg-[#8a8a8a] bg-opacity-50 flex justify-evenly mx-4 no-scrollbar">
-            {(function () {
-              const components = []
-              Filters.forEach(f => {
-                components.push(
-                  <button
-                    style={filterState === f ? active : inactive}
-                    key={Filters.indexOf(f)}
-                    className="w-fit px-1 py-1 rounded-full transition-all ease hover:italic text-xs sm:text-base"
-                    onClick={() => { handleFilter(f) }}>
-                    <Link>{f}</Link>
-                  </button>)
-              })
-              return components
-            })()}
+      <ResetContext.Provider value={resetFlag}>
+        <div className="flex flex-col gap-16 p-4 text-xs sm:text-base h-full">
+          <div className='max-w-5xl'>
+            <h2 className="font-light">
+              <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES
+                FERREIRA </Link>is an editor and creative with 6+ years of post-production and
+              video-making expertise. This website features his freelance video work and
+              commercial advertising portfolio for broadcast and social media.</h2>
           </div>
+          <div className="flex w-full justify-between items-end -mb-8">
+            <Timeline filter={filterState} reset={handleReset} />
+            <div className="flex gap-2">
+              <Dropdown text={'filter'} options={createFilterObj(['freelance', 'commercial'])} />
+              <Dropdown text={'sort'} options={createSortObj(['new-old', 'old-new', 'a-z', 'z-a'])} />
+            </div>
+          </div>
+          <WorkList works={dynamicWorksList} />
         </div>
-        <WorkList works={dynamicWorksList} />
-      </div>
+      </ResetContext.Provider>
     </LoadContext.Provider>
   )
 }

@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import classNames from "classnames"
-import Draggable from 'react-draggable'
 import { useSearchParams } from "react-router-dom"
+import Moveable from "react-moveable"
 import svg from './../assets/x-icon.svg'
 import triangleSVG from '../assets/iconmonstr-triangle-1.svg'
 import { LoadContext } from "../helpers/LoadContext"
 import { Months } from "../helpers/Constants"
+import { useResetContext } from "../helpers/ResetContext"
 
 const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, grabOverrideRef }) => {
   const [mode, setMode] = useState(false)               // desktop window
@@ -14,6 +15,9 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
   const [grabbing, setGrabbing] = useState(false)       // floating windows
   const [hovering, setHovering] = useState(false)       // link button hover
 
+  const targetRef = useRef(null)                        // drag, scale
+
+  // date formatting
   const d = new Date(date)
   const formattedDate = date === "#########" ? "#########" : Months[d.getMonth()] + " " + d.getFullYear()
 
@@ -33,11 +37,12 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
 
   // reset trigger
   const [searchParams] = useSearchParams()
+  const resetFlag = useResetContext()
 
   useEffect(() => {
     setMode(false)
     setExpand(false)
-  }, [searchParams])
+  }, [searchParams, resetFlag])
 
   // handlers, functions
 
@@ -72,9 +77,11 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
     }
   }
 
-  const handleStartGrab = () => {
+  const handleStartGrab = (e) => {
     push()
     grabOverrideRef.current = true
+    e.target.style.transform = e.transform
+    setGrabbing(true)
   }
 
   // effects
@@ -102,6 +109,9 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
 
   const linkClass = "w-full bg-[#7f7f7f] bg-opacity-0 text-left hover:bg-opacity-80 hover:cursor-pointer rounded-xl flex justify-between transition-all duration-100 px-4 font-light ease-in relative"
   const linkClassActive = "bg-opacity-30"
+
+  const isYoutubeEmbed = url.includes('youtube')
+  const embedStyle = isYoutubeEmbed ? { transform: "scale(0.9)" } : { clipPath: 'inset(5% 0)' }
 
   return (
     <>
@@ -138,21 +148,19 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
 
       {/* desktop window */}
       {mode && desktop() &&
-        <Draggable
-          onStart={handleStartGrab}
-          onDrag={() => setGrabbing(true)}
-          onStop={() => setGrabbing(false)}
-          bounds={"body"}>
+        <>
           <button
             className="w-fit h-fit bg-[#757575] text-white absolute rounded
-               focus:border-green-400 border border-[#757575]"
+                 focus:border-green-400 border border-[#757575] target"
             style={{
               animation: 'open 75ms',
-              zIndex: order * 10,
+              zIndex: (order + 1) * 10,
               cursor: grabbing ? 'grabbing' : 'grab',
+              width: '514px'
             }}
             onKeyDown={handleKeyDown}
             id={`work-${id}`}
+            ref={targetRef}
           >
             {/* tooltip */}
             {!grabOverrideRef.current &&
@@ -161,21 +169,20 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
                 Drag to move
                 <img src={triangleSVG} className="absolute w-2 -bottom-1 left-12 transform -scale-y-100" />
               </span>}
-
             <div className="flex w-full justify-between items-center px-4 pt-2 text-sm">
               <div
                 onMouseDown={close}
                 onTouchStart={close}
-                className="hover:bg-[#6b6b6b] w-7 h-7 rounded-full grid 
-                    place-content-center m-1 transition duration-300 ease 
-                    cursor-pointer z-50 absolute left-1 top-[1px]">
+                className="hover:bg-[#6b6b6b] w-7 h-7 rounded-full grid
+                      place-content-center m-1 transition duration-300 ease
+                      cursor-pointer z-50 absolute left-1 top-[1px]">
                 <img src={svg} className="scale-[30%]" />
               </div>
               <a className="ml-5">{title}</a>
               <span className="">{type}</span>
               <span className="flex-none">{formattedDate}</span>
             </div>
-            <div className="px-4 w-full" style={{ clipPath: 'inset(5% 0)' }}>
+            <div className="px-4 w-full" style={embedStyle}>
               <iframe
                 src={url}
                 className="h-[300px] w-[480px]"
@@ -183,9 +190,23 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
                 allowFullScreen />
             </div>
           </button>
-        </Draggable>
+          <div style={{ zIndex: (order + 1) * 10, }}>
+            <Moveable
+              target={targetRef}
+              draggable
+              scalable
+              keepRatio
+              throttleScale={0}
+              throttleDrag={1}
+              edgeDraggable={false}
+              onDrag={e => handleStartGrab(e)}
+              onDragEnd={() => setGrabbing(false)}
+              onScale={e => { e.target.style.transform = e.transform }}
+              renderDirections={['nw', 'ne', 'sw', 'se']}
+            />
+          </div>
+        </>
       }
-      {/* <Window mode={mode} order={order} /> */}
     </>
   )
 }
