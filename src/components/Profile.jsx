@@ -27,7 +27,7 @@ const Profile = () => {
           <li><a href="http://www.linkedin.com/in/lsfnyc">LinkedIn</a></li>
           <li><a href="https://vimeo.com/lsfnyc">Vimeo</a></li>
           <li><a href="https://www.instagram.com/lsf.mov/">Instagram</a></li>
-          <li><a href="https://soundcloud.com/sancheslucas">Music</a></li>
+          <li><a href="https://linktr.ee/somdolucas">Music</a></li>
           <li className="text-[#73fc7a]"><a href={resume}>Resume</a></li>
         </ul>
       </div>
