@@ -5,7 +5,7 @@ export default [
     "type": "assistant editor",
     "date": "2025-04T00:00",
     "filter": "commercial",
-    "url": "https://www.youtube.com/watch?v=azyLhfy4yoo"
+    "url": "https://www.youtube.com/embed/azyLhfy4yoo?si=J0iVHkzChoz91pdx"
   },
   {
     "disabled": false,
