@@ -1,6 +1,14 @@
 export default [
   {
     "disabled": false,
+    "title": "NBA Playoffs 2025",
+    "type": "assistant editor",
+    "date": "2025-04T00:00",
+    "filter": "commercial",
+    "url": "https://www.youtube.com/watch?v=azyLhfy4yoo"
+  },
+  {
+    "disabled": false,
     "title": "Google Project Astra",
     "type": "assistant editor",
     "date": "2024-12T00:00",
@@ -176,12 +184,12 @@ export default [
     "url": "https://player.vimeo.com/video/892116952"
   },
   {
-    "disabled": true,
+    "disabled": false,
     "title": "Dunkin",
     "type": "assistant editor",
     "filter": "commercial",
     "date": "2022-09T00:00",
-    "url": "https://player.vimeo.com/video/892116944"
+    "url": "https://player.vimeo.com/video/1077679347"
   },
   {
     "disabled": false,
@@ -208,12 +216,12 @@ export default [
     "url": "https://player.vimeo.com/video/892116919"
   },
   {
-    "disabled": true,
+    "disabled": false,
     "title": "Midea",
     "type": "assistant editor",
     "filter": "commercial",
     "date": "2022-05T00:00",
-    "url": "https://player.vimeo.com/video/892116910"
+    "url": "https://player.vimeo.com/video/1077679390"
   },
   {
     "disabled": false,
@@ -232,20 +240,20 @@ export default [
     "url": "https://player.vimeo.com/video/892116900"
   },
   {
-    "disabled": true,
+    "disabled": false,
     "title": "DSG",
     "type": "assistant editor",
     "filter": "commercial",
     "date": "2021-12T00:00",
-    "url": "https://player.vimeo.com/video/892116894"
+    "url": "https://player.vimeo.com/video/1077679325"
   },
   {
-    "disabled": true,
+    "disabled": false,
     "title": "Statefarm",
     "type": "assistant editor",
     "filter": "commercial",
     "date": "2021-10T00:00",
-    "url": "https://player.vimeo.com/video/892116885"
+    "url": "https://player.vimeo.com/video/1077679432"
   },
   {
     "disabled": false,
