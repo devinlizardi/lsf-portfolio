@@ -56,6 +56,7 @@ const WorkList = ({ works }) => {
                   id={i}
                   hoverOverride={hoverOverride.current}
                   grabOverrideRef={grabOverrideRef}
+                  windowOpen={stack.length > 0}
                 />
               </li>
             )

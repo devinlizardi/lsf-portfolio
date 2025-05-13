@@ -9,11 +9,12 @@ import { LoadContext } from "../helpers/LoadContext"
 import { Months } from "../helpers/Constants"
 import { useResetContext } from "../helpers/ResetContext"
 
-const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, grabOverrideRef }) => {
+const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, grabOverrideRef, windowOpen }) => {
   const [mode, setMode] = useState(false)               // desktop window
   const [expand, setExpand] = useState(false)           // mobile dropdown
   const [grabbing, setGrabbing] = useState(false)       // floating windows
   const [hovering, setHovering] = useState(false)       // link button hover
+  const [mouseX, setMouseX] = useState(0)               // hover preview
 
   const targetRef = useRef(null)                        // drag, scale
 
@@ -121,6 +122,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
         style={expandedStyle}
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
+        onMouseMove={(e) => setMouseX(e.clientX)}
       >
         <p className="w-[155px] md:w-[270px] md:-mr-[200px] relative">
           {title}
@@ -143,7 +145,16 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
             className="absolute bg-black w-28 h-6 -top-6 grid place-content-center text-white rounded-sm tooltip">
             Click to open
             <img src={triangleSVG} className="absolute w-2 -bottom-1 left-12 transform -scale-y-100" />
-          </span>}
+          </span>
+        }
+        {/* hover preview */}
+        {desktop() && hovering && !windowOpen &&
+          <div
+            style={{ left: mouseX }}
+            className="absolute w-40 left-[30%] -top-8 h-24 rounded-xl bg-[#343434] border border-pink-400"
+          >
+            preview
+          </div>}
       </button>
 
       {/* desktop window */}
