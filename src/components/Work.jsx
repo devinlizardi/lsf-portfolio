@@ -9,6 +9,12 @@ import { LoadContext } from "../helpers/LoadContext"
 import { Months } from "../helpers/Constants"
 import { useResetContext } from "../helpers/ResetContext"
 
+import demoPreview from '../assets/lsf_preview_pop-ups_2025-05-27_2358/240p/240p_clean/04_harley-davidson_clean_240p.mp4'
+import demoPreview1 from '../assets/lsf_preview_pop-ups_2025-05-27_2358/240p/240p_clean/02_college-2_clean_240p.mp4'
+import demoPreview2 from '../assets/lsf_preview_pop-ups_2025-05-27_2358/240p/240p_clean/03_college-3_clean_240p.mp4'
+import demoPreview3 from '../assets/lsf_preview_pop-ups_2025-05-27_2358/240p/240p_clean/01_college-1_clean_240p.mp4'
+
+
 const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, grabOverrideRef, windowOpen }) => {
   const [mode, setMode] = useState(false)               // desktop window
   const [expand, setExpand] = useState(false)           // mobile dropdown
@@ -85,6 +91,12 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
     setGrabbing(true)
   }
 
+  const randomDemo = () => {
+    const demos = [demoPreview, demoPreview1, demoPreview2, demoPreview3]
+    const randInt = Math.floor(Math.random() * 4)
+    return demos[randInt]
+  }
+
   // effects
 
   useEffect(() => {
@@ -151,9 +163,9 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
         {desktop() && hovering && !windowOpen &&
           <div
             style={{ left: mouseX }}
-            className="absolute w-40 left-[30%] -top-8 h-24 rounded-xl bg-[#343434] border border-pink-400"
+            className="absolute w-44 left-[30%] -top-8 rounded-xl bg-[#343434] z-50 border-pink-400 border-2"
           >
-            preview
+            <video src={randomDemo()} autoPlay loop className="rounded-xl" />
           </div>}
       </button>
 
