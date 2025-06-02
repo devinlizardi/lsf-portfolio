@@ -2,12 +2,16 @@ import { Formal } from "./ProfileFormal"
 import resume from '../assets/Lucas_2025.pdf'
 import { Link } from "react-router-dom"
 
+import backIcon from "./../assets/lsf_back_icon_assets_2025-05-30_0224/02_Back_icon_hover.mp4"
+
 const Profile = () => {
 
   return (
     <div className="p-12 font-normal">
 
-      <Link to='/' className="mb-8 block hover:text-yellow-300">-</Link>
+      <Link to='/' className="mb-8 block hover:text-yellow-300">
+        <video src={backIcon} autoPlay loop className="w-16 grayscale hover:grayscale-0" />
+      </Link>
       <div className="max-w-3xl text-justify text-xs sm:text-base">
         <Formal />
       </div>

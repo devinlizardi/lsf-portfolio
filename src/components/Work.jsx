@@ -165,7 +165,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
             style={{ left: mouseX }}
             className="absolute w-44 left-[30%] -top-8 rounded-xl bg-[#343434] z-50 border-pink-400 border-2"
           >
-            <video src={randomDemo()} autoPlay loop className="rounded-xl" />
+            <video src={randomDemo()} autoPlay loop className="rounded-[10px]" />
           </div>}
       </button>
 
