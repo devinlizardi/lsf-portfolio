@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useMemo, useRef, useState } from "react"
 import classNames from "classnames"
 import { useSearchParams } from "react-router-dom"
 import Moveable from "react-moveable"
@@ -91,11 +91,11 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
     setGrabbing(true)
   }
 
-  const randomDemo = () => {
+  const randomDemo = useMemo(() => {
     const demos = [demoPreview, demoPreview1, demoPreview2, demoPreview3]
     const randInt = Math.floor(Math.random() * 4)
     return demos[randInt]
-  }
+  }, [])
 
   // effects
 
@@ -165,7 +165,7 @@ const Work = ({ title, type, date, url, push, pop, order, id, hoverOverride, gra
             style={{ left: mouseX }}
             className="absolute w-44 left-[30%] -top-8 rounded-xl bg-[#343434] z-50 border-pink-400 border-2"
           >
-            <video src={randomDemo()} autoPlay loop className="rounded-[10px]" />
+            <video src={randomDemo} autoPlay loop className="rounded-[10px]" />
           </div>}
       </button>
 
