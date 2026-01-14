@@ -1,5 +1,5 @@
 import { Link, useSearchParams } from "react-router-dom"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { WorkList } from './components/WorkList'
 import { Timeline } from './components/Timeline'
 import { LoadContext } from './helpers/LoadContext'
@@ -86,7 +86,7 @@ function App() {
     })
   }
 
-  const yearsOfExperience = new Date().getFullYear() - 2019;
+  const yearsOfExperience = useMemo(() => new Date().getFullYear() - 2019, []);
 
   return (
     <LoadContext.Provider value={{ setFirstLoad, firstLoad }}>
