@@ -86,6 +86,8 @@ function App() {
     })
   }
 
+  const yearsOfExperience = new Date().getFullYear() - 2019;
+
   return (
     <LoadContext.Provider value={{ setFirstLoad, firstLoad }}>
       <ResetContext.Provider value={resetFlag}>
@@ -93,7 +95,7 @@ function App() {
           <div className='max-w-5xl'>
             <h2 className="font-light">
               <Link to={'/profile'} className="text-white hover:text-yellow-300">LUCAS SANCHES
-                FERREIRA </Link>is an editor and creative with 6+ years of post-production and
+                FERREIRA </Link>is an editor and creative with {yearsOfExperience}+ years of post-production and
               video-making expertise. This website features his freelance video work and
               commercial advertising portfolio for broadcast and social media.</h2>
           </div>
