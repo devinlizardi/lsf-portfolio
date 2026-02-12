@@ -112,7 +112,7 @@ function App() {
                 LUCAS SANCHES FERREIRA{" "}
               </Link>
               is an editor and creative with {yearsOfExperience}+ years of
-              post-production and video-making expertise. This website features
+              post-production and video-making experience. This website features
               his freelance video work and commercial advertising portfolio for
               broadcast and social media.
             </h2>
