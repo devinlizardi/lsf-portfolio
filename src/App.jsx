@@ -113,8 +113,8 @@ function App() {
               </Link>
               is an editor and creative with {yearsOfExperience}+ years of
               post-production and video-making experience. This website features
-              his freelance video work and commercial advertising portfolio for
-              broadcast and social media.
+              his independent video work and commercial advertising portfolio
+              for broadcast and social media.
             </h2>
           </div>
           <div className="flex w-full justify-between items-end -mb-8">
